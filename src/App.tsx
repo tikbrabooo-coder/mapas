@@ -77,7 +77,7 @@ function MapsSection() {
   return (
     <section id="mapas-preview" className="perf-section bg-[#F7FAFF] px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-6xl"><h2 className="mb-8 text-center text-2xl font-black text-slate-900 sm:text-4xl">VEJA NA PRÁTICA UM POUCO DO QUE VOCÊ VAI RECEBER</h2>
-        <div className="flex snap-x snap-mandatory touch-pan-x gap-4 overflow-x-auto px-2 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6 sm:px-8">
+        <div className="flex snap-x snap-mandatory touch-auto gap-4 overflow-x-auto px-2 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6 sm:px-8">
           {maps.map(([title, source]) => <article key={title} className="carousel-card aspect-square w-[92vw] max-w-[680px] shrink-0 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl sm:w-[72vw] lg:w-[60vw]"><div className="flex h-full flex-col p-3 sm:p-4"><p className="mb-2 text-center text-xs font-extrabold uppercase tracking-wider text-blue-700 sm:text-sm">{title}</p><div className="flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-slate-50"><img src={img(source)} alt={title} className="h-full w-full object-contain" loading="lazy" /></div></div></article>)}
         </div>
       </div>
