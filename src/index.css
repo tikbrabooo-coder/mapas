@@ -1,125 +1,86 @@
 @import "tailwindcss";
 
 @keyframes subtle-pulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 12px rgba(16, 185, 129, 0.35), 0 12px 34px rgba(16, 185, 129, 0.18); }
-  50% { transform: scale(1.025); box-shadow: 0 0 20px rgba(16, 185, 129, 0.55), 0 15px 42px rgba(16, 185, 129, 0.25); }
+  0%, 100% { transform: scale(1); box-shadow: 0 0 12px rgba(16,185,129,.35), 0 12px 34px rgba(16,185,129,.18); }
+  50% { transform: scale(1.025); box-shadow: 0 0 20px rgba(16,185,129,.55), 0 15px 42px rgba(16,185,129,.25); }
 }
-.animate-subtle-pulse { filter: drop-shadow(0 4px 12px rgba(16, 185, 129, 0.3)); animation: 2s cubic-bezier(0.4, 0, 0.6, 1) infinite subtle-pulse; }
-.shadow-soft { box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.06), 0 2px 6px -2px rgba(15, 23, 42, 0.04); }
-.shadow-pink-cta { box-shadow: 0 6px 24px rgba(16, 185, 129, 0.35), 0 2px 6px rgba(0, 0, 0, 0.08); }
+.animate-subtle-pulse { filter: drop-shadow(0 4px 12px rgba(16,185,129,.3)); animation: 2s cubic-bezier(.4,0,.6,1) infinite subtle-pulse; }
+.shadow-soft { box-shadow: 0 4px 20px -4px rgba(15,23,42,.06), 0 2px 6px -2px rgba(15,23,42,.04); }
+.shadow-pink-cta { box-shadow: 0 6px 24px rgba(16,185,129,.35), 0 2px 6px rgba(0,0,0,.08); }
 .perf-section { content-visibility: auto; contain-intrinsic-size: auto 760px; }
-.dark-tech-shell { background-color: #F0F4FA; position: relative; overflow-x: hidden; display: flex; flex-direction: column; }
-.dark-tech-shell:before { content: ""; pointer-events: none; background-color: transparent; background-image: linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px); background-size: 56px 56px; position: absolute; inset: 0; -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0.3), transparent 85%); mask-image: linear-gradient(rgba(0, 0, 0, 0.3), transparent 85%); }
-/* Ordem da página: oferta primeiro e depoimentos logo abaixo dela. */
-.dark-tech-shell > aside { order: 1; }
-.dark-tech-shell > section:nth-of-type(1) { order: 2; }
-.dark-tech-shell > section:nth-of-type(2) { order: 3; }
-.dark-tech-shell > section:nth-of-type(3) { order: 4; }
-.dark-tech-shell > section:nth-of-type(5) { order: 5; }
-.dark-tech-shell > section:nth-of-type(4) { order: 6; }
-.dark-tech-shell > section:nth-of-type(6) { order: 7; }
-.dark-tech-shell > section:nth-of-type(7) { order: 8; }
-.dark-tech-shell > footer { order: 9; }
-.hero-accent { color: #2563eb; font-style: normal; display: inline-block; }
-.pricing-card { color: #0f172a; background: #ffffff; border-color: #e2e8f0; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
-.pricing-card.shadow-pink-cta { border-color: #2563eb; box-shadow: 0 14px 40px rgba(37, 99, 235, 0.12); }
-.pricing-card h3, .pricing-card li, .pricing-card .text-slate-800 { text-shadow: none; color: #0f172a !important; }
-.pricing-card .text-slate-500, .pricing-card .text-slate-400 { text-shadow: none; color: #64748b !important; }
-.pricing-card .border-t { border-color: #f1f5f9 !important; }
-.pricing-card .bg-blue-100 { background: #eff6ff !important; border-color: #bfdbfe !important; }
-.pricing-card .shadow-md { box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2); }
-.pricing-subtitle { text-shadow: none !important; }
-.bonus-card { color: #0f172a; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04); background: #ffffff !important; border: 1px solid #e2e8f0 !important; }
-.bonus-card:hover { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08); border-color: #94a3b8 !important; }
-.bonus-card p { text-shadow: none !important; filter: none !important; }
-.bonus-card p:first-of-type { font-weight: 800; color: #0f172a !important; }
-.bonus-card p:last-of-type { color: #64748b !important; }
-/* Remove as setas laterais da seção de bônus. */
-button[aria-label="Voltar bônus"], button[aria-label="Avançar bônus"] { display: none !important; }
-.faq-card, .faq-card button, .faq-card div { text-shadow: none !important; }
-.faq-card button { color: #0f172a !important; }
-.faq-card div { color: #475569 !important; }
+.dark-tech-shell { background:#F0F4FA; position:relative; overflow-x:hidden; }
+.dark-tech-shell:before { content:""; pointer-events:none; background-image:linear-gradient(rgba(0,0,0,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.02) 1px,transparent 1px); background-size:56px 56px; position:absolute; inset:0; -webkit-mask-image:linear-gradient(rgba(0,0,0,.3),transparent 85%); mask-image:linear-gradient(rgba(0,0,0,.3),transparent 85%); }
+.dark-tech-shell > * { position:relative; z-index:1; }
+.hero-accent { color:#2563eb; font-style:normal; display:inline-block; }
+html { scroll-behavior:smooth; }
+body { margin:0; min-width:320px; overflow-x:hidden; }
+img { max-width:100%; }
 
-html { scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; overflow-x: hidden; }
-img { max-width: 100%; }
+/* Bônus: sem setas laterais. */
+button[aria-label="Voltar bônus"], button[aria-label="Avançar bônus"] { display:none !important; }
 
-/* Garantia: composição alinhada à referência enviada. */
-.dark-tech-shell > section:nth-of-type(6) {
-  background: #F0F4FA !important;
-  padding: 32px 16px 46px !important;
-}
-.dark-tech-shell > section:nth-of-type(6) > div {
-  max-width: 1024px !important;
-  min-height: 280px;
-  display: grid !important;
-  grid-template-columns: 250px minmax(0, 1fr);
-  align-items: center;
-  gap: 42px;
-  text-align: left !important;
-  border-radius: 24px !important;
-  border: 1px solid #dbe3ed !important;
-  background: #fff !important;
-  padding: 40px 56px !important;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
-}
-.dark-tech-shell > section:nth-of-type(6) > div > svg {
-  width: 210px !important;
-  height: 210px !important;
-  margin: 0 auto !important;
-  color: transparent !important;
-  stroke: transparent !important;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgMzAwIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImciPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZjFhOCI+PC9zdG9wPjxzdG9wIG9mZnNldD0iLjU1IiBzdG9wLWNvbG9yPSIjZDY5YTI0Ij48L3N0b3A+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGE1YTBiIj48L3N0b3A+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PGNpcmNsZSBjeD0iMTUwIiBjeT0iMTUwIiByPSIxMzkiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2U3ZTdlNyIgc3Ryb2tlLXdpZHRoPSI0Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSIxNTAiIGN5PSIxNTAiIHI9IjEyNCIgZmlsbD0idXJsKCNnKSIgc3Ryb2tlPSIjOGE1YTBiIiBzdHJva2Utd2lkdGg9IjciPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iMTAxIiBmaWxsPSIjZjdkNzdhIiBzdHJva2U9IiNmZmYxYjAiIHN0cm9rZS13aWR0aD0iNCI+PC9jaXJjbGU+PHRleHQgeD0iMTUwIiB5PSI2MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM1YjNhMDgiPkdBUkFOVElBIDMwIERJQVM8L3RleHQ+PHRleHQgeD0iMTUwIiB5PSI4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM1YjNhMDgiPlNBVElTRkFDw4dPIEdBUkFOVElEQTwvdGV4dD48dGV4dCB4PSIxNTAiIHk9IjE3NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNzYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiM2YTQzMDUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjE1MCIgeT0iMTk4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgaWQ9ImQiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiM2YTQzMDUiPkRJQVM8L3RleHQ+PHRleHQgeD0iMTUwIiB5PSIyMzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjNWIzYTA4Ij5HQVJBTlRJQSDigJQgR0FSQU5USUE8L3RleHQ+PC9zdmc+");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-.dark-tech-shell > section:nth-of-type(6) h2 {
-  margin: 0 !important;
-  font-size: 30px !important;
-  line-height: 1.15 !important;
-  font-weight: 900 !important;
-  color: #0f172a !important;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-}
-.dark-tech-shell > section:nth-of-type(6) p {
-  margin-top: 18px !important;
-  max-width: 690px !important;
-  font-size: 16px !important;
-  line-height: 1.65 !important;
-  color: #27486f !important;
-  text-align: left !important;
-}
-.dark-tech-shell > section:nth-of-type(6) p::after {
-  content: "Seu risco é absolutamente zero. Garantia blindada de 30 dias.";
-  display: block;
-  margin-top: 20px;
-  padding-left: 28px;
-  color: #155eef;
-  font-size: 16px;
-  line-height: 1.35;
-  font-weight: 800;
-}
-.dark-tech-shell > section:nth-of-type(6) p::before {
-  content: "✓";
-  display: inline-block;
-  margin-right: 8px;
-  color: #155eef;
-  font-size: 18px;
-  font-weight: 900;
-}
-@media (max-width: 700px) {
-  .dark-tech-shell > section:nth-of-type(6) { padding: 20px 12px 32px !important; }
-  .dark-tech-shell > section:nth-of-type(6) > div {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    min-height: 0;
-    padding: 28px 22px !important;
-    border-radius: 20px !important;
-    text-align: center !important;
-  }
-  .dark-tech-shell > section:nth-of-type(6) > div > svg { width: 150px !important; height: 150px !important; }
-  .dark-tech-shell > section:nth-of-type(6) h2 { font-size: 25px !important; line-height: 1.12 !important; text-align: left !important; }
-  .dark-tech-shell > section:nth-of-type(6) p { margin-top: 14px !important; font-size: 15px !important; line-height: 1.55 !important; }
+/* Cards da oferta — composição baseada exatamente na referência enviada. */
+#ofertas { background:#F0F4FA !important; padding:56px 16px 64px !important; }
+#ofertas > div { max-width:1150px !important; }
+#ofertas > div > h2 { font-size:34px !important; line-height:1.12 !important; }
+#ofertas > div > p { color:#64748b !important; }
+#ofertas > div > div.grid { margin-top:42px !important; gap:30px !important; align-items:stretch !important; }
+.pricing-card { color:#0f172a !important; background:#fff !important; border:1px solid #e2e8f0 !important; border-radius:24px !important; box-shadow:0 8px 24px rgba(15,23,42,.05) !important; transform:none !important; padding:34px 32px 30px !important; }
+.pricing-card.shadow-xl { border:1px solid #dbe3ed !important; }
+.pricing-card h3 { color:#0f172a !important; font-size:30px !important; line-height:1.15 !important; margin-top:4px !important; }
+.pricing-card .pricing-subtitle { color:#64748b !important; font-size:14px !important; margin-top:8px !important; }
+.pricing-card ul { margin-top:28px !important; }
+.pricing-card li { color:#0f172a !important; font-size:15px !important; line-height:1.35 !important; }
+.pricing-card li svg { color:#2563eb !important; }
+.pricing-card .bg-blue-50 { background:#eff6ff !important; border-color:#dbeafe !important; color:#2563eb !important; }
+.pricing-card .border-t { border-color:#eef2f7 !important; margin-top:auto; padding-top:28px !important; }
+.pricing-card .text-3xl { color:#0f172a !important; font-size:42px !important; line-height:1 !important; }
+.pricing-card .text-xs.font-semibold { color:#64748b !important; }
+.pricing-card a { min-height:64px; border-radius:16px !important; }
+.pricing-card .bg-emerald-600 { background:#08a66d !important; box-shadow:0 8px 22px rgba(8,166,109,.25) !important; }
+.pricing-card .bg-emerald-600:hover { background:#07945f !important; }
+.pricing-card .border.border-slate-300 { background:#fff !important; color:#111827 !important; border-color:#cbd5e1 !important; box-shadow:none !important; }
+.pricing-card .border.border-slate-300:hover { background:#fff !important; }
+.pricing-card .text-blue-700 { color:#1d4ed8 !important; }
+.pricing-card .absolute.-top-4 { top:-15px !important; background:#2563eb !important; box-shadow:0 5px 14px rgba(37,99,235,.25) !important; }
+.pricing-card .max-w-\[19rem\] { max-width:330px !important; margin-top:18px !important; margin-bottom:8px !important; }
+
+/* Garantia — mesma composição da referência enviada, usando o selo real do projeto. */
+#garantia { background:#F0F4FA !important; padding:32px 16px 46px !important; }
+#garantia > div { max-width:1024px !important; min-height:280px; display:grid !important; grid-template-columns:250px minmax(0,1fr) !important; align-items:center !important; gap:42px !important; text-align:left !important; border-radius:24px !important; border:1px solid #dbe3ed !important; background:#fff !important; padding:40px 56px !important; box-shadow:0 12px 30px rgba(15,23,42,.06) !important; }
+#garantia > div > div:first-child { display:flex !important; justify-content:center !important; }
+#garantia > div > div:first-child > div { width:210px !important; height:210px !important; background:transparent !important; border-radius:0 !important; overflow:visible !important; }
+#garantia > div > div:first-child img { width:100% !important; height:100% !important; object-fit:contain !important; transform:none !important; }
+#garantia h2 { margin:0 !important; font-size:30px !important; line-height:1.15 !important; font-weight:900 !important; color:#0f172a !important; letter-spacing:-.02em !important; text-transform:uppercase; }
+#garantia > div > div:last-child > p { margin-top:18px !important; max-width:690px !important; font-size:16px !important; line-height:1.65 !important; color:#27486f !important; text-align:left !important; }
+#garantia > div > div:last-child > div { margin-top:20px !important; }
+#garantia > div > div:last-child > div p { display:inline-flex !important; align-items:center !important; gap:8px !important; margin:0 !important; color:#155eef !important; font-size:16px !important; line-height:1.35 !important; font-weight:800 !important; }
+#garantia > div > div:last-child > div svg { color:#155eef !important; }
+
+.faq-card { text-shadow:none !important; }
+.faq-card button { color:#0f172a !important; }
+.faq-card div { color:#475569 !important; }
+.bonus-card { color:#0f172a; box-shadow:0 6px 20px rgba(0,0,0,.04); background:#fff !important; border:1px solid #e2e8f0 !important; }
+.bonus-card p { text-shadow:none !important; filter:none !important; }
+.bonus-card p:first-of-type { font-weight:800; color:#0f172a !important; }
+.bonus-card p:last-of-type { color:#64748b !important; }
+
+@media (max-width:700px) {
+  #ofertas { padding:42px 12px 50px !important; }
+  #ofertas > div > h2 { font-size:27px !important; }
+  #ofertas > div > div.grid { margin-top:32px !important; gap:22px !important; }
+  .pricing-card { padding:28px 20px 24px !important; border-radius:20px !important; }
+  .pricing-card h3 { font-size:27px !important; }
+  .pricing-card .text-3xl { font-size:38px !important; }
+  .pricing-card li { font-size:14px !important; }
+  .pricing-card a { min-height:58px; font-size:15px !important; }
+  .pricing-card .max-w-\[19rem\] { max-width:280px !important; }
+
+  #garantia { padding:20px 12px 32px !important; }
+  #garantia > div { grid-template-columns:1fr !important; gap:18px !important; min-height:0 !important; padding:28px 22px !important; border-radius:20px !important; }
+  #garantia > div > div:first-child > div { width:165px !important; height:165px !important; }
+  #garantia h2 { font-size:25px !important; line-height:1.12 !important; text-align:left !important; }
+  #garantia > div > div:last-child > p { margin-top:14px !important; font-size:15px !important; line-height:1.55 !important; }
+  #garantia > div > div:last-child > div { margin-top:18px !important; }
+  #garantia > div > div:last-child > div p { font-size:14px !important; }
 }
