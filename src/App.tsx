@@ -115,62 +115,53 @@ function Pricing({ onUpgrade }: { onUpgrade: () => void }) {
 
 function SocialProof() {
   const testimonials = [
-    ['Lucas M.', 'São Paulo, SP'],
-    ['Matheus S.', 'Belo Horizonte, MG'],
-    ['Gabriel R.', 'Curitiba, PR'],
-    ['Felipe A.', 'Recife, PE'],
-    ['Guilherme C.', 'Porto Alegre, RS'],
-    ['Larissa F.', 'Florianópolis, SC'],
+    'ChatGPT Image 3 de out. de 2026, 12_57_32.png',
+    'WhatsApp Image 2026-10-03 at 12.35.11 (1).jpeg',
+    'WhatsApp Image 2026-10-03 at 12.35.29 (1).jpeg',
   ];
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
       setCurrent((index) => (index + 1) % testimonials.length);
-    }, 3500);
+    }, 4000);
     return () => window.clearInterval(timer);
   }, []);
+
+  const testimonialUrl = (filename: string) =>
+    `https://raw.githubusercontent.com/tikbrabooo-coder/Teste-IMPORT/main/${encodeURIComponent(filename)}`;
 
   return (
     <section className="bg-[#F0F4FA] px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-3xl">
         <h2 className="text-center text-2xl font-black text-slate-900 sm:text-4xl">QUEM ESTÁ ESTUDANDO TAMBÉM</h2>
 
-        <div className="mx-auto mt-8 max-w-xl overflow-hidden">
+        <div className="mx-auto mt-8 max-w-xl overflow-hidden rounded-2xl">
           <div
             className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${current * 100}%)` }}
           >
-            {testimonials.map(([name, city]) => (
-              <article
-                key={name}
-                className="w-full shrink-0 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="font-bold text-slate-900">{name}</p>
-                    <p className="mt-1 text-sm text-slate-500">Estudante de Ciência da Computação</p>
-                  </div>
-                  <div className="shrink-0 text-sm font-bold tracking-wide text-amber-400" aria-label="5 estrelas">
-                    ★★★★★
-                  </div>
-                </div>
-                <p className="mt-5 text-sm leading-relaxed text-slate-600 sm:text-base">
-                  “Material visual e organizado para revisar os principais assuntos.”
-                </p>
-                <p className="mt-4 text-xs font-medium text-slate-400">{city}</p>
-              </article>
+            {testimonials.map((filename) => (
+              <div key={filename} className="w-full shrink-0">
+                <img
+                  src={testimonialUrl(filename)}
+                  alt="Depoimento de cliente sobre os mapas mentais"
+                  className="block h-auto w-full rounded-2xl object-contain shadow-sm"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             ))}
           </div>
         </div>
 
         <div className="mt-5 flex justify-center gap-2" aria-label="Navegação dos depoimentos">
-          {testimonials.map(([person], index) => (
+          {testimonials.map((filename, index) => (
             <button
-              key={person}
+              key={filename}
               type="button"
               onClick={() => setCurrent(index)}
-              aria-label={`Ver depoimento de ${person}`}
+              aria-label={`Ver depoimento ${index + 1}`}
               className={`h-2.5 rounded-full transition-all ${current === index ? 'w-7 bg-blue-600' : 'w-2.5 bg-slate-300'}`}
             />
           ))}
