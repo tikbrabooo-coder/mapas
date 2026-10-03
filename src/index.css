@@ -85,42 +85,54 @@ button[aria-label="Voltar bônus"], button[aria-label="Avançar bônus"] { displ
   #garantia > div > div:last-child > div p { font-size:14px !important; }
 }
 
-/* Paleta da página: azul tecnológico + ciano + verde, com variação suave entre as seções. */
-#hero-section { background:#EFF6FF !important; }
-#mapas-preview { background:#F7FAFF !important; }
-#mapas-preview .carousel-card { border-color:#DCEBFF !important; }
-#mapas-preview .text-blue-700 { color:#1D4ED8 !important; }
+/* Paleta refinada: variação suave de azuis, branco e verde para acompanhar a oferta. */
+#hero-section { background:linear-gradient(180deg,#EDF5FF 0%,#F6F9FD 100%) !important; }
+#hero-section h1 { color:#10233F !important; }
+#mapas-preview { background:#FFFFFF !important; }
+#mapas-preview .carousel-card { background:#FFFFFF !important; border-color:#DCE7F5 !important; box-shadow:0 10px 30px rgba(37,99,235,.07) !important; }
+#mapas-preview .text-blue-700 { color:#1D5FDB !important; }
 
-#bonus-section { background:#EEF7FF !important; }
+#bonus-section { background:linear-gradient(180deg,#EEF7FF 0%,#F8FBFF 100%) !important; }
 #bonus-section h2 { color:#0F3B73 !important; }
-#bonus-section .bonus-card { border-color:#CFE4FF !important; }
-#bonus-section .bonus-card:hover { border-color:#8EC5FF !important; }
+#bonus-section > div > div:first-child p { color:#5A718E !important; }
+#bonus-section .bonus-card { background:#FFFFFF !important; border-color:#D5E7FA !important; box-shadow:0 8px 24px rgba(15,59,115,.06) !important; }
+#bonus-section .bonus-card:hover { border-color:#9BC8F5 !important; box-shadow:0 12px 30px rgba(37,99,235,.10) !important; }
 #bonus-section .bonus-card p:first-of-type { color:#123B68 !important; }
+#bonus-section .bonus-card p:last-of-type { color:#6A7E95 !important; }
 
-#ofertas { background:#F0F4FA !important; }
+#ofertas { background:linear-gradient(180deg,#F1F6FC 0%,#EAF2FA 100%) !important; }
+#ofertas > div > h2 { color:#10233F !important; }
 #ofertas > div > h2 span { color:#2563EB !important; }
+.pricing-card { background:#FFFFFF !important; }
 .pricing-card .text-blue-600,
 .pricing-card .text-blue-700 { color:#2563EB !important; }
-.pricing-card .text-emerald-600 { color:#059669 !important; }
-.pricing-card .bg-emerald-600 { background:#08A66D !important; }
+.pricing-card .bg-emerald-600 { background:#0AA66F !important; }
+.pricing-card .bg-emerald-600:hover { background:#088E60 !important; }
+.pricing-card .border.border-slate-300 { border-color:#CAD7E6 !important; }
+.pricing-card .bg-blue-50 { background:#EFF6FF !important; border-color:#CFE1F8 !important; }
 
-#depoimentos { background:#F8FBFF !important; }
-#depoimentos h2 { color:#0F2847 !important; }
-#depoimentos p { color:#64748B; }
+#depoimentos { background:#FFFFFF !important; }
+#depoimentos h2 { color:#10233F !important; }
+#depoimentos .max-w-xl > div > div { background:#FBFDFF; }
 #depoimentos .bg-blue-600 { background:#2563EB !important; }
 
-#garantia { background:#EEF5FF !important; }
-#garantia > div { border-color:#D8E7FA !important; }
+#garantia { background:linear-gradient(180deg,#F7F9FC 0%,#EEF5FF 100%) !important; }
+#garantia > div { background:#FFFFFF !important; border-color:#D9E5F2 !important; box-shadow:0 10px 28px rgba(15,42,67,.06) !important; }
 #garantia h2 { color:#102A43 !important; }
-#garantia > div > div:last-child > p { color:#365777 !important; }
+#garantia > div > div:last-child > p { color:#3B5875 !important; }
+#garantia > div > div:last-child p.flex { color:#155EEF !important; }
 
-#faq { background:#F4F8FD !important; }
+#faq { background:#F8FAFD !important; }
 #faq h2 { color:#102A43 !important; }
-#faq .faq-card { border-color:#D9E6F5 !important; }
-#faq .faq-card button { background:#FFFFFF !important; }
+#faq .faq-card { background:#FFFFFF !important; border-color:#DCE6F1 !important; }
+#faq .faq-card button { color:#152A40 !important; }
+
+footer { background:#0F2742 !important; color:#B9CBE0 !important; }
 
 @media (max-width:700px) {
-  #bonus-section { padding-top:40px !important; padding-bottom:40px !important; }
-  #bonus-section h2 { line-height:1.08 !important; }
-  #depoimentos { padding-top:40px !important; padding-bottom:40px !important; }
+  #hero-section { background:linear-gradient(180deg,#EDF5FF 0%,#F7FAFF 100%) !important; }
+  #bonus-section { background:linear-gradient(180deg,#EEF7FF 0%,#F9FCFF 100%) !important; }
+  #ofertas { background:linear-gradient(180deg,#F1F6FC 0%,#EAF2FA 100%) !important; }
+  #depoimentos { background:#FFFFFF !important; }
+  #garantia { background:linear-gradient(180deg,#F7F9FC 0%,#EFF6FF 100%) !important; }
 }
