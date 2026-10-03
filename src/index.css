@@ -34,6 +34,8 @@
 .bonus-card p { text-shadow: none !important; filter: none !important; }
 .bonus-card p:first-of-type { font-weight: 800; color: #0f172a !important; }
 .bonus-card p:last-of-type { color: #64748b !important; }
+/* Remove as setas laterais da seção de bônus. */
+button[aria-label="Voltar bônus"], button[aria-label="Avançar bônus"] { display: none !important; }
 .faq-card, .faq-card button, .faq-card div { text-shadow: none !important; }
 .faq-card button { color: #0f172a !important; }
 .faq-card div { color: #475569 !important; }
