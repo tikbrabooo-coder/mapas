@@ -159,3 +159,251 @@ footer { background:#0F2742 !important; color:#B9CBE0 !important; }
 .pricing-card h3 { color:#102A43 !important; }
 .pricing-card .pricing-subtitle { color:#2563EB !important; }
 .pricing-card li svg { color:#2563EB !important; }
+
+/* Nova variação de cores — mais identidade visual sem perder a unidade da página. */
+body {
+  background: #F6F8FC !important;
+}
+
+.dark-tech-shell {
+  background: #F6F8FC !important;
+}
+
+/* Faixa de urgência: coral */
+.hero-accent {
+  color: #6D5CE7 !important;
+}
+#hero-section > div > a + p {
+  color: #52627A !important;
+}
+#hero-section > div > div > a {
+  box-shadow: 0 10px 26px rgba(8,166,109,.22) !important;
+}
+#hero-section {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(109,92,231,.08), transparent 32%),
+    linear-gradient(135deg,#EEF6FF 0%,#F7F3FF 52%,#F8FBFF 100%) !important;
+  border-bottom: 1px solid #E7E4F5;
+}
+
+/* Prévia dos mapas: azul + ciano + toque quente */
+#mapas-preview {
+  background: linear-gradient(180deg,#FFFDF8 0%,#F7FBFF 100%) !important;
+}
+#mapas-preview h2 {
+  color: #163A5F !important;
+}
+#mapas-preview .carousel-card {
+  border-color: #CFE9F7 !important;
+  box-shadow: 0 12px 30px rgba(0,119,182,.08) !important;
+}
+#mapas-preview .carousel-card > div > p {
+  color: #0077B6 !important;
+}
+#mapas-preview .carousel-card > div > div {
+  background: linear-gradient(145deg,#F3FBFF 0%,#FFFFFF 60%,#FFF9F1 100%) !important;
+}
+
+/* Bônus: verde-água + azul */
+#bonus-section {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(46,196,182,.08), transparent 28%),
+    linear-gradient(180deg,#EEFDF9 0%,#F3F8FF 100%) !important;
+  border-top: 1px solid #D7F2EC;
+  border-bottom: 1px solid #DCEBFA;
+}
+#bonus-section h2 {
+  color: #0F766E !important;
+}
+#bonus-section h2::after {
+  background: #F59E0B !important;
+}
+#bonus-section > div > div:first-child p {
+  color: #54707A !important;
+}
+#bonus-section .bonus-card {
+  border-color: #CDEDE4 !important;
+  box-shadow: 0 10px 26px rgba(15,118,110,.07) !important;
+}
+#bonus-section .bonus-card:hover {
+  border-color: #82D9C8 !important;
+  box-shadow: 0 14px 32px rgba(46,196,182,.12) !important;
+}
+#bonus-section .bonus-card p:first-of-type {
+  color: #164E63 !important;
+}
+#bonus-section .bonus-card p:last-of-type {
+  color: #667B88 !important;
+}
+
+/* Ofertas: lavanda + azul + verde */
+#ofertas {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(124,58,237,.07), transparent 28%),
+    linear-gradient(180deg,#F6F1FF 0%,#F0F7FF 100%) !important;
+  border-top: 1px solid #E7DDFB;
+  border-bottom: 1px solid #DCEBFA;
+}
+#ofertas > div > h2 {
+  color: #1E2A44 !important;
+}
+#ofertas > div > h2 span {
+  color: #7C3AED !important;
+}
+#ofertas > div > p {
+  color: #65708A !important;
+}
+.pricing-card {
+  border-color: #DCDDF4 !important;
+  box-shadow: 0 12px 28px rgba(47,52,89,.07) !important;
+}
+.pricing-card:first-child {
+  background: linear-gradient(180deg,#FFFFFF 0%,#FAF9FF 100%) !important;
+}
+.pricing-card:nth-child(2) {
+  background: linear-gradient(180deg,#FFFFFF 0%,#F5FFFC 100%) !important;
+  border-color: #BFE8DD !important;
+  box-shadow: 0 14px 34px rgba(15,118,110,.10) !important;
+}
+.pricing-card .absolute.-top-4 {
+  background: #7C3AED !important;
+  box-shadow: 0 6px 16px rgba(124,58,237,.24) !important;
+}
+.pricing-card .pricing-subtitle {
+  color: #6D5CE7 !important;
+}
+.pricing-card li svg {
+  color: #00A6A6 !important;
+}
+.pricing-card .bg-blue-50 {
+  background: #F1EEFF !important;
+  border-color: #DDD4FF !important;
+  color: #6D3FE3 !important;
+}
+.pricing-card .text-blue-700 {
+  color: #6D3FE3 !important;
+}
+.pricing-card:nth-child(2) .text-blue-700 {
+  color: #0F766E !important;
+}
+.pricing-card .border.border-slate-300 {
+  border-color: #D5D0E8 !important;
+}
+.pricing-card .bg-emerald-600 {
+  background: #08A66D !important;
+}
+.pricing-card .bg-emerald-600:hover {
+  background: #078B5D !important;
+}
+
+/* Depoimentos: tom creme para quebrar a sequência de azuis */
+#depoimentos {
+  background: linear-gradient(180deg,#FFFCF7 0%,#FFFFFF 100%) !important;
+  border-bottom: 1px solid #F0E7DA;
+}
+#depoimentos h2 {
+  color: #7C2D12 !important;
+}
+#depoimentos p {
+  color: #8B6B53 !important;
+}
+#depoimentos .bg-blue-600 {
+  background: #F97316 !important;
+}
+#depoimentos .flex.justify-center > span:not(.bg-blue-600) {
+  background: #F3DED0 !important;
+}
+
+/* Garantia: verde suave com detalhe azul */
+#garantia {
+  background:
+    radial-gradient(circle at 8% 20%, rgba(16,185,129,.06), transparent 28%),
+    linear-gradient(180deg,#F0FFF9 0%,#F1F8FF 100%) !important;
+  border-bottom: 1px solid #DDEFEA;
+}
+#garantia > div {
+  border-color: #CFE7DF !important;
+  box-shadow: 0 12px 30px rgba(6,95,70,.06) !important;
+}
+#garantia h2 {
+  color: #064E3B !important;
+}
+#garantia > div > div:last-child > p {
+  color: #4A6470 !important;
+}
+#garantia > div > div:last-child > div p,
+#garantia > div > div:last-child > div svg {
+  color: #0F8A6E !important;
+}
+
+/* FAQ: lavanda discreta */
+#faq {
+  background: linear-gradient(180deg,#F7F3FF 0%,#F8FAFD 100%) !important;
+}
+#faq h2 {
+  color: #4C1D95 !important;
+}
+#faq .faq-card {
+  border-color: #E5D8F7 !important;
+  box-shadow: 0 6px 18px rgba(76,29,149,.04) !important;
+}
+#faq .faq-card button,
+#faq .faq-card button span {
+  color: #312E63 !important;
+}
+#faq .faq-card button svg {
+  color: #7C3AED !important;
+}
+#faq .faq-card div {
+  color: #6A657A !important;
+}
+
+/* Rodapé: azul-marinho profundo */
+footer {
+  background: linear-gradient(180deg,#14213D 0%,#0D1830 100%) !important;
+  color: #BFD0E7 !important;
+}
+
+/* Modal da oferta: roxo + âmbar, combinando com a nova paleta */
+.fixed.inset-0[role="dialog"] > div {
+  border: 1px solid #E5D8F7 !important;
+}
+.fixed.inset-0[role="dialog"] .bg-blue-50 {
+  background: #F1EEFF !important;
+}
+.fixed.inset-0[role="dialog"] .text-blue-600,
+.fixed.inset-0[role="dialog"] .text-blue-700 {
+  color: #6D3FE3 !important;
+}
+.fixed.inset-0[role="dialog"] .bg-\[\#F0F4FA\] {
+  background: linear-gradient(135deg,#F7F4FF 0%,#F3FBFF 100%) !important;
+}
+.fixed.inset-0[role="dialog"] .text-emerald-600 {
+  color: #0AA66F !important;
+}
+
+@media (max-width:700px) {
+  #hero-section {
+    background:
+      radial-gradient(circle at 10% 8%, rgba(109,92,231,.07), transparent 34%),
+      linear-gradient(160deg,#F0F7FF 0%,#F8F4FF 55%,#FAFCFF 100%) !important;
+  }
+  #mapas-preview {
+    background: linear-gradient(180deg,#FFFDF9 0%,#F6FBFF 100%) !important;
+  }
+  #bonus-section {
+    background: linear-gradient(180deg,#F0FDF9 0%,#F5F9FF 100%) !important;
+  }
+  #ofertas {
+    background: linear-gradient(180deg,#F7F2FF 0%,#F1F8FF 100%) !important;
+  }
+  #depoimentos {
+    background: linear-gradient(180deg,#FFFCF7 0%,#FFFFFF 100%) !important;
+  }
+  #garantia {
+    background: linear-gradient(180deg,#F0FFF9 0%,#F2F8FF 100%) !important;
+  }
+  #faq {
+    background: linear-gradient(180deg,#F8F4FF 0%,#F8FAFD 100%) !important;
+  }
+}
