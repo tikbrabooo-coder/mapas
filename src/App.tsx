@@ -132,7 +132,70 @@ function Footer() { return <footer className="bg-slate-950 px-4 py-8 text-center
 
 function UpgradeModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   if (!open) return null;
-  return <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4"><div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:p-8"><button type="button" onClick={onClose} aria-label="Fechar" className="absolute right-4 top-4 rounded-full p-2 hover:bg-slate-100"><X className="h-5 w-5" /></button><div className="text-center"><Sparkles className="mx-auto h-10 w-10 text-blue-600" /><p className="mt-3 text-sm font-extrabold uppercase tracking-widest text-blue-700">Oferta especial</p><h2 className="mt-2 text-2xl font-black text-slate-900 sm:text-3xl">Leve o Plano Completo por R$ 19,90</h2><p className="mt-2 text-sm text-slate-600">Inclui os mapas principais e os materiais extras.</p></div><div className="mt-6 space-y-2">{['+300 Mapas Mentais de Ciência da Computação', '9 grandes áreas de estudo', 'Arquitetura de Computadores', 'Sistemas Operacionais', 'Redes de Computadores', 'Banco de Dados', 'Engenharia de Software', 'Mapa Visual de Big-O', 'Guia Visual de Siglas de TI'].map(item => <p key={item} className="flex items-start gap-2 text-sm"><Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />{item}</p>)}</div><div className="mt-6"><Button href={CHECKOUTS.UPSELL}>QUERO APROVEITAR A OFERTA</Button></div><button type="button" onClick={onClose} className="mt-3 w-full py-2 text-xs font-bold text-slate-500">Agora não</button></div></div>;
+  return (
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/70 p-3 sm:items-center sm:p-4">
+      <div className="relative max-h-[92vh] w-full max-w-md overflow-y-auto rounded-[28px] bg-white p-5 shadow-2xl sm:p-8">
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Fechar oferta"
+          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        <div className="pt-2 text-center">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-50">
+            <Sparkles className="h-6 w-6 text-blue-600" />
+          </div>
+          <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-blue-700">Oferta especial</p>
+          <h2 className="mt-2 text-2xl font-black leading-tight text-slate-900 sm:text-3xl">
+            Leve o Plano Completo por R$ 19,90
+          </h2>
+          <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-600 sm:text-base">
+            Aproveite e leve o Plano Completo por <span className="font-black text-blue-700">R$ 7,10 a menos</span> que o valor normal de R$ 27,00.
+          </p>
+        </div>
+
+        <div className="mt-5 rounded-2xl bg-[#F0F4FA] p-4 sm:mt-6 sm:p-5">
+          <p className="text-center text-sm font-black text-slate-900 sm:text-base">Você recebe no Plano Completo:</p>
+          <div className="mt-4 space-y-2.5">
+            {[
+              '+300 Mapas Mentais de Ciência da Computação',
+              '9 grandes áreas de estudo',
+              'Arquitetura de Computadores',
+              'Sistemas Operacionais',
+              'Redes de Computadores',
+              'Banco de Dados',
+              'Engenharia de Software',
+              'Mapa Visual de Big-O',
+              'Guia Visual de Siglas de TI',
+              'Mapa de Comparativos',
+              'Checklist de Revisão',
+              'Caderno Visual de Pegadinhas'
+            ].map(item => (
+              <p key={item} className="flex items-start gap-2 text-sm font-semibold text-slate-700">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                <span>{item}</span>
+              </p>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-5 sm:mt-6">
+          <Button href={CHECKOUTS.UPSELL}>QUERO ADQUIRIR PLANO COMPLETO POR 19,90</Button>
+        </div>
+
+        <button
+          type="button"
+          onClick={onClose}
+          className="mt-3 w-full rounded-xl py-2 text-xs font-bold text-slate-500 hover:text-slate-700"
+        >
+          Agora não
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default function App() {
