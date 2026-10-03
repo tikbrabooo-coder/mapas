@@ -75,7 +75,7 @@ function Hero() {
 
 function MapsSection() {
   return (
-    <section className="perf-section bg-[#F0F4FA] px-4 py-12 sm:py-16">
+    <section id="mapas-preview" className="perf-section bg-[#F7FAFF] px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-6xl"><h2 className="mb-8 text-center text-2xl font-black text-slate-900 sm:text-4xl">VEJA NA PRÁTICA UM POUCO DO QUE VOCÊ VAI RECEBER</h2>
         <div className="flex snap-x snap-mandatory touch-pan-x gap-4 overflow-x-auto px-2 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6 sm:px-8">
           {maps.map(([title, source]) => <article key={title} className="carousel-card aspect-square w-[92vw] max-w-[680px] shrink-0 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl sm:w-[72vw] lg:w-[60vw]"><div className="flex h-full flex-col p-3 sm:p-4"><p className="mb-2 text-center text-xs font-extrabold uppercase tracking-wider text-blue-700 sm:text-sm">{title}</p><div className="flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-slate-50"><img src={img(source)} alt={title} className="h-full w-full object-contain" loading="lazy" /></div></div></article>)}
@@ -87,7 +87,7 @@ function MapsSection() {
 
 function Bonuses() {
   return (
-    <section className="perf-section bg-[#F0F4FA] px-4 py-12 sm:py-16">
+    <section id="bonus-section" className="perf-section bg-[#EEF6FF] px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-6xl"><div className="mb-8 text-center"><h2 className="text-2xl font-black text-slate-900 sm:text-4xl">BÔNUS EXCLUSIVOS DO PLANO COMPLETO</h2><p className="mt-3 text-base text-slate-600 sm:text-lg">Além dos mapas principais, você recebe materiais extras para facilitar a revisão.</p></div>
         <div className="flex gap-4 overflow-x-auto px-2 py-4 [scrollbar-width:none] sm:gap-6 sm:px-8">
           {bonuses.map(([title, source]) => <article key={title} className="bonus-card w-[82vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl"><div className="aspect-[4/3] overflow-hidden bg-slate-50"><img src={img(source)} alt={title} className="h-full w-full object-contain" loading="lazy" /></div><div className="p-5"><p className="text-base font-black">{title}</p><p className="mt-2 text-sm leading-relaxed text-slate-600">Material extra para consulta e revisão rápida.</p></div></article>)}
@@ -125,7 +125,7 @@ function SocialProof() {
     `https://raw.githubusercontent.com/tikbrabooo-coder/Teste-IMPORT/main/${encodeURIComponent(filename)}`;
 
   return (
-    <section className="bg-[#F0F4FA] px-4 py-12 sm:py-16">
+    <section id="depoimentos" className="bg-[#F8FBFF] px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-3xl">
         <h2 className="text-center text-2xl font-black text-slate-900 sm:text-4xl">QUEM ESTÁ ESTUDANDO TAMBÉM</h2>
         <p className="mt-2 text-center text-sm font-semibold text-slate-500">Deslize para o lado e veja os depoimentos.</p>
@@ -167,7 +167,7 @@ function Guarantee() {
 function FAQ() {
   const [open, setOpen] = useState(0);
   const items = ['O material é físico ou digital?', 'O que existe dentro dos +300 mapas?', 'Os mapas substituem um curso completo?', 'Posso estudar pelo celular?', 'Como recebo o acesso ao material?', 'Como funciona a garantia de 30 dias?'];
-  return <section className="bg-[#F0F4FA] px-4 py-12 sm:py-16"><div className="mx-auto max-w-3xl"><h2 className="text-center text-3xl font-black text-slate-900 sm:text-4xl">Perguntas frequentes</h2><div className="mt-8 space-y-3">{items.map((q, i) => <div key={q} className="faq-card overflow-hidden rounded-2xl border border-slate-200 bg-white"><button type="button" onClick={() => setOpen(open === i ? -1 : i)} className="flex w-full items-center justify-between gap-4 p-5 text-left font-extrabold"><span>{q}</span><ChevronDown className={`h-5 w-5 transition-transform ${open === i ? 'rotate-180' : ''}`} /></button>{open === i && <div className="px-5 pb-5 text-sm leading-relaxed text-slate-600">{q === "Como recebo o acesso ao material?" ? "Após a confirmação do pagamento, você recebe o acesso ao material diretamente pelo WhatsApp." : "Informações detalhadas sobre o material e seu acesso digital."}</div>}</div>)}</div></div></section>;
+  return <section id="faq" className="bg-[#F3F7FC] px-4 py-12 sm:py-16"><div className="mx-auto max-w-3xl"><h2 className="text-center text-3xl font-black text-slate-900 sm:text-4xl">Perguntas frequentes</h2><div className="mt-8 space-y-3">{items.map((q, i) => <div key={q} className="faq-card overflow-hidden rounded-2xl border border-slate-200 bg-white"><button type="button" onClick={() => setOpen(open === i ? -1 : i)} className="flex w-full items-center justify-between gap-4 p-5 text-left font-extrabold"><span>{q}</span><ChevronDown className={`h-5 w-5 transition-transform ${open === i ? 'rotate-180' : ''}`} /></button>{open === i && <div className="px-5 pb-5 text-sm leading-relaxed text-slate-600">{q === "Como recebo o acesso ao material?" ? "Após a confirmação do pagamento, você recebe o acesso ao material diretamente pelo WhatsApp." : "Informações detalhadas sobre o material e seu acesso digital."}</div>}</div>)}</div></div></section>;
 }
 
 function Footer() { return <footer className="bg-slate-950 px-4 py-8 text-center text-sm text-slate-400">© 2026 • +300 Mapas Mentais de Ciência da Computação</footer>; }
