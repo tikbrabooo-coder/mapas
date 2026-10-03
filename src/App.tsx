@@ -217,6 +217,9 @@ function FAQ() {
             </div>
           ))}
         </div>
+        <div className="mx-auto mt-8 max-w-md">
+          <Button href="#ofertas">QUERO VER AS OFERTAS</Button>
+        </div>
       </div>
     </section>
   );
