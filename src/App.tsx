@@ -76,7 +76,7 @@ function MapsSection() {
   return (
     <section className="perf-section bg-[#F0F4FA] px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-6xl"><h2 className="mb-8 text-center text-2xl font-black text-slate-900 sm:text-4xl">VEJA NA PRÁTICA UM POUCO DO QUE VOCÊ VAI RECEBER</h2>
-        <div className="flex gap-4 overflow-x-auto px-2 py-4 [scrollbar-width:none] sm:gap-6 sm:px-8">
+        <div className="flex snap-x snap-mandatory touch-pan-x gap-4 overflow-x-auto px-2 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6 sm:px-8">
           {maps.map(([title, source]) => <article key={title} className="carousel-card aspect-square w-[92vw] max-w-[680px] shrink-0 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl sm:w-[72vw] lg:w-[60vw]"><div className="flex h-full flex-col p-3 sm:p-4"><p className="mb-2 text-center text-xs font-extrabold uppercase tracking-wider text-blue-700 sm:text-sm">{title}</p><div className="flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-slate-50"><img src={img(source)} alt={title} className="h-full w-full object-contain" loading="lazy" /></div></div></article>)}
         </div>
       </div>
@@ -89,7 +89,7 @@ function Bonuses() {
     <section className="perf-section bg-[#F0F4FA] px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-6xl"><div className="mb-8 text-center"><h2 className="text-2xl font-black text-slate-900 sm:text-4xl">BÔNUS EXCLUSIVOS DO PLANO COMPLETO</h2><p className="mt-3 text-base text-slate-600 sm:text-lg">Além dos mapas principais, você recebe materiais extras para facilitar a revisão.</p></div>
         <div className="flex gap-4 overflow-x-auto px-2 py-4 [scrollbar-width:none] sm:gap-6 sm:px-8">
-          {bonuses.map(([title, source]) => <article key={title} className="bonus-card w-[82vw] max-w-[340px] shrink-0 overflow-hidden rounded-3xl"><div className="aspect-[4/3] overflow-hidden bg-slate-50"><img src={img(source)} alt={title} className="h-full w-full object-contain" loading="lazy" /></div><div className="p-5"><p className="text-base font-black">{title}</p><p className="mt-2 text-sm leading-relaxed text-slate-600">Material extra para consulta e revisão rápida.</p></div></article>)}
+          {bonuses.map(([title, source]) => <article key={title} className="bonus-card w-[82vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl"><div className="aspect-[4/3] overflow-hidden bg-slate-50"><img src={img(source)} alt={title} className="h-full w-full object-contain" loading="lazy" /></div><div className="p-5"><p className="text-base font-black">{title}</p><p className="mt-2 text-sm leading-relaxed text-slate-600">Material extra para consulta e revisão rápida.</p></div></article>)}
         </div>
       </div>
     </section>
