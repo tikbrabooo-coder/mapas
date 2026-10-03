@@ -43,3 +43,83 @@ button[aria-label="Voltar bônus"], button[aria-label="Avançar bônus"] { displ
 html { scroll-behavior: smooth; }
 body { margin: 0; min-width: 320px; overflow-x: hidden; }
 img { max-width: 100%; }
+
+/* Garantia: composição alinhada à referência enviada. */
+.dark-tech-shell > section:nth-of-type(6) {
+  background: #F0F4FA !important;
+  padding: 32px 16px 46px !important;
+}
+.dark-tech-shell > section:nth-of-type(6) > div {
+  max-width: 1024px !important;
+  min-height: 280px;
+  display: grid !important;
+  grid-template-columns: 250px minmax(0, 1fr);
+  align-items: center;
+  gap: 42px;
+  text-align: left !important;
+  border-radius: 24px !important;
+  border: 1px solid #dbe3ed !important;
+  background: #fff !important;
+  padding: 40px 56px !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+.dark-tech-shell > section:nth-of-type(6) > div > svg {
+  width: 210px !important;
+  height: 210px !important;
+  margin: 0 auto !important;
+  color: transparent !important;
+  stroke: transparent !important;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgMzAwIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImciPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZjFhOCI+PC9zdG9wPjxzdG9wIG9mZnNldD0iLjU1IiBzdG9wLWNvbG9yPSIjZDY5YTI0Ij48L3N0b3A+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGE1YTBiIj48L3N0b3A+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PGNpcmNsZSBjeD0iMTUwIiBjeT0iMTUwIiByPSIxMzkiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2U3ZTdlNyIgc3Ryb2tlLXdpZHRoPSI0Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSIxNTAiIGN5PSIxNTAiIHI9IjEyNCIgZmlsbD0idXJsKCNnKSIgc3Ryb2tlPSIjOGE1YTBiIiBzdHJva2Utd2lkdGg9IjciPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iMTAxIiBmaWxsPSIjZjdkNzdhIiBzdHJva2U9IiNmZmYxYjAiIHN0cm9rZS13aWR0aD0iNCI+PC9jaXJjbGU+PHRleHQgeD0iMTUwIiB5PSI2MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM1YjNhMDgiPkdBUkFOVElBIDMwIERJQVM8L3RleHQ+PHRleHQgeD0iMTUwIiB5PSI4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM1YjNhMDgiPlNBVElTRkFDw4dPIEdBUkFOVElEQTwvdGV4dD48dGV4dCB4PSIxNTAiIHk9IjE3NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNzYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiM2YTQzMDUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjE1MCIgeT0iMTk4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgaWQ9ImQiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiM2YTQzMDUiPkRJQVM8L3RleHQ+PHRleHQgeD0iMTUwIiB5PSIyMzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjNWIzYTA4Ij5HQVJBTlRJQSDigJQgR0FSQU5USUE8L3RleHQ+PC9zdmc+");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.dark-tech-shell > section:nth-of-type(6) h2 {
+  margin: 0 !important;
+  font-size: 30px !important;
+  line-height: 1.15 !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+.dark-tech-shell > section:nth-of-type(6) p {
+  margin-top: 18px !important;
+  max-width: 690px !important;
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+  color: #27486f !important;
+  text-align: left !important;
+}
+.dark-tech-shell > section:nth-of-type(6) p::after {
+  content: "Seu risco é absolutamente zero. Garantia blindada de 30 dias.";
+  display: block;
+  margin-top: 20px;
+  padding-left: 28px;
+  color: #155eef;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 800;
+}
+.dark-tech-shell > section:nth-of-type(6) p::before {
+  content: "✓";
+  display: inline-block;
+  margin-right: 8px;
+  color: #155eef;
+  font-size: 18px;
+  font-weight: 900;
+}
+@media (max-width: 700px) {
+  .dark-tech-shell > section:nth-of-type(6) { padding: 20px 12px 32px !important; }
+  .dark-tech-shell > section:nth-of-type(6) > div {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    min-height: 0;
+    padding: 28px 22px !important;
+    border-radius: 20px !important;
+    text-align: center !important;
+  }
+  .dark-tech-shell > section:nth-of-type(6) > div > svg { width: 150px !important; height: 150px !important; }
+  .dark-tech-shell > section:nth-of-type(6) h2 { font-size: 25px !important; line-height: 1.12 !important; text-align: left !important; }
+  .dark-tech-shell > section:nth-of-type(6) p { margin-top: 14px !important; font-size: 15px !important; line-height: 1.55 !important; }
+}
