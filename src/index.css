@@ -136,3 +136,26 @@ footer { background:#0F2742 !important; color:#B9CBE0 !important; }
   #depoimentos { background:#FFFFFF !important; }
   #garantia { background:linear-gradient(180deg,#F7F9FC 0%,#EFF6FF 100%) !important; }
 }
+
+/* Destaques tipográficos para reforçar a identidade azul da oferta. */
+#hero-section h1 { color:#102A43 !important; }
+.hero-accent { color:#2563EB !important; }
+#mapas-preview h2 { color:#163A5F !important; }
+#mapas-preview h2::first-line { color:#163A5F; }
+#mapas-preview .text-blue-700 { color:#2563EB !important; }
+
+#bonus-section h2 { color:#123B68 !important; }
+#bonus-section h2::after { content:""; display:inline-block; width:7px; height:7px; margin-left:9px; margin-bottom:3px; border-radius:999px; background:#2EC4B6; }
+#ofertas > div > h2 { color:#102A43 !important; }
+#ofertas > div > h2 span { color:#2563EB !important; }
+#depoimentos h2 { color:#163A5F !important; }
+#depoimentos p { color:#5D7187 !important; }
+#garantia h2 { color:#102A43 !important; }
+#garantia > div > div:last-child > p { color:#49647F !important; }
+#faq h2 { color:#102A43 !important; }
+#faq .faq-card button span { color:#17324D !important; }
+#faq .faq-card div { color:#5B7188 !important; }
+
+.pricing-card h3 { color:#102A43 !important; }
+.pricing-card .pricing-subtitle { color:#2563EB !important; }
+.pricing-card li svg { color:#2563EB !important; }
