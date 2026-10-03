@@ -131,28 +131,36 @@ function SocialProof() {
     return () => window.clearInterval(timer);
   }, []);
 
-  const [name, city] = testimonials[current];
-
   return (
     <section className="bg-[#F0F4FA] px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-3xl">
         <h2 className="text-center text-2xl font-black text-slate-900 sm:text-4xl">QUEM ESTÁ ESTUDANDO TAMBÉM</h2>
-        <div className="relative mx-auto mt-8 min-h-[210px] max-w-xl overflow-hidden">
+
+        <div className="mx-auto mt-8 max-w-xl overflow-hidden">
           <div
-            key={current}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-opacity duration-500"
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${current * 100}%)` }}
           >
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="font-bold text-slate-900">{name}</p>
-                <p className="mt-1 text-sm text-slate-500">Estudante de Ciência da Computação</p>
-              </div>
-              <div className="text-amber-400" aria-label="5 estrelas">★★★★★</div>
-            </div>
-            <p className="mt-5 text-sm leading-relaxed text-slate-600 sm:text-base">
-              “Material visual e organizado para revisar os principais assuntos.”
-            </p>
-            <p className="mt-4 text-xs font-medium text-slate-400">{city}</p>
+            {testimonials.map(([name, city]) => (
+              <article
+                key={name}
+                className="w-full shrink-0 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="font-bold text-slate-900">{name}</p>
+                    <p className="mt-1 text-sm text-slate-500">Estudante de Ciência da Computação</p>
+                  </div>
+                  <div className="shrink-0 text-sm font-bold tracking-wide text-amber-400" aria-label="5 estrelas">
+                    ★★★★★
+                  </div>
+                </div>
+                <p className="mt-5 text-sm leading-relaxed text-slate-600 sm:text-base">
+                  “Material visual e organizado para revisar os principais assuntos.”
+                </p>
+                <p className="mt-4 text-xs font-medium text-slate-400">{city}</p>
+              </article>
+            ))}
           </div>
         </div>
 
