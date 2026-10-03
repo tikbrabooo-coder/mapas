@@ -114,8 +114,62 @@ function Pricing({ onUpgrade }: { onUpgrade: () => void }) {
 }
 
 function SocialProof() {
-  const people = ['Lucas M.', 'Matheus S.', 'Gabriel R.', 'Felipe A.'];
-  return <section className="bg-[#F0F4FA] px-4 py-12 sm:py-16"><div className="mx-auto max-w-5xl"><h2 className="text-center text-2xl font-black text-slate-900 sm:text-4xl">QUEM ESTÁ ESTUDANDO TAMBÉM</h2><div className="mt-8 grid gap-4 sm:grid-cols-2">{people.map((name) => <article key={name} className="rounded-2xl border border-slate-200 bg-white p-5"><p className="font-bold text-slate-900">{name}</p><p className="mt-1 text-sm text-slate-500">Estudante de Ciência da Computação</p><p className="mt-3 text-sm text-slate-600">“Material visual e organizado para revisar os principais assuntos.”</p></article>)}</div></div></section>;
+  const testimonials = [
+    ['Lucas M.', 'São Paulo, SP'],
+    ['Matheus S.', 'Belo Horizonte, MG'],
+    ['Gabriel R.', 'Curitiba, PR'],
+    ['Felipe A.', 'Recife, PE'],
+    ['Guilherme C.', 'Porto Alegre, RS'],
+    ['Larissa F.', 'Florianópolis, SC'],
+  ];
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setCurrent((index) => (index + 1) % testimonials.length);
+    }, 3500);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const [name, city] = testimonials[current];
+
+  return (
+    <section className="bg-[#F0F4FA] px-4 py-12 sm:py-16">
+      <div className="mx-auto max-w-3xl">
+        <h2 className="text-center text-2xl font-black text-slate-900 sm:text-4xl">QUEM ESTÁ ESTUDANDO TAMBÉM</h2>
+        <div className="relative mx-auto mt-8 min-h-[210px] max-w-xl overflow-hidden">
+          <div
+            key={current}
+            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-opacity duration-500"
+          >
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="font-bold text-slate-900">{name}</p>
+                <p className="mt-1 text-sm text-slate-500">Estudante de Ciência da Computação</p>
+              </div>
+              <div className="text-amber-400" aria-label="5 estrelas">★★★★★</div>
+            </div>
+            <p className="mt-5 text-sm leading-relaxed text-slate-600 sm:text-base">
+              “Material visual e organizado para revisar os principais assuntos.”
+            </p>
+            <p className="mt-4 text-xs font-medium text-slate-400">{city}</p>
+          </div>
+        </div>
+
+        <div className="mt-5 flex justify-center gap-2" aria-label="Navegação dos depoimentos">
+          {testimonials.map(([person], index) => (
+            <button
+              key={person}
+              type="button"
+              onClick={() => setCurrent(index)}
+              aria-label={`Ver depoimento de ${person}`}
+              className={`h-2.5 rounded-full transition-all ${current === index ? 'w-7 bg-blue-600' : 'w-2.5 bg-slate-300'}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function Guarantee() {
