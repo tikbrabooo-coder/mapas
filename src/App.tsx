@@ -62,7 +62,7 @@ function Hero() {
       </aside>
       <section id="hero-section" className="bg-[#F0F4FA] px-4 pb-12 pt-8 text-slate-800 sm:pb-20 sm:pt-12">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-[2.15rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">+300 Mapas Mentais de<br /><span className="hero-accent">Ciência da Computação.</span><br /><span>Tudo organizado de forma visual.</span></h1>
+          <h1 className="text-[2.05rem] font-black leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"><span className="block sm:inline">+300 Mapas Mentais</span><span className="block sm:inline"> de <span className="hero-accent">Ciência da</span></span><span className="block sm:inline"> <span className="hero-accent">Computação.</span></span><br /><span>Tudo organizado de forma visual.</span></h1>
           <a href="#ofertas" className="mx-auto mt-8 block w-full max-w-2xl sm:mt-12"><img src={img('ChatGPT Image 2 de out. de 2026, 10_45_59.png')} alt="Mockup +300 Mapas Mentais de Ciência da Computação" className="mx-auto h-auto w-full object-contain" /></a>
           <p className="mx-auto mt-7 max-w-2xl text-base font-medium leading-relaxed text-slate-600 sm:text-xl">Revise os principais conceitos da Ciência da Computação de forma visual, organizada e sem se perder em conteúdos extensos.</p>
           <div className="mx-auto mt-7 max-w-xl"><Button href="#ofertas">QUERO ACESSAR OS +300 MAPAS AGORA</Button></div>
