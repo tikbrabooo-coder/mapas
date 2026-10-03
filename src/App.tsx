@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowDown, ArrowRight, Check, ChevronDown, Clock, ShieldCheck, Sparkles, Star, X } from 'lucide-react';
 
 const ASSET = 'https://rainbow-brioche-d5ce72.netlify.app/images/';
@@ -185,9 +186,15 @@ function Footer() { return <footer className="bg-slate-950 px-4 py-8 text-center
 
 function UpgradeModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   if (!open) return null;
-  return (
-    <div className="fixed inset-0 z-[99999] flex items-end justify-center bg-slate-950/70 p-3 sm:items-center sm:p-4">
-      <div className="relative max-h-[92vh] w-full max-w-md overflow-y-auto rounded-[28px] bg-white p-5 shadow-2xl sm:p-8">
+
+  const modal = (
+    <div
+      className="fixed inset-0 z-[2147483647] flex items-center justify-center bg-slate-950/75 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Oferta especial do Plano Completo"
+    >
+      <div className="relative max-h-[90vh] w-full max-w-md overflow-y-auto rounded-[24px] bg-white p-5 shadow-2xl sm:p-8">
         <button
           type="button"
           onClick={onClose}
@@ -249,6 +256,8 @@ function UpgradeModal({ open, onClose }: { open: boolean; onClose: () => void })
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modal, document.body) : null;
 }
 
 export default function App() {
