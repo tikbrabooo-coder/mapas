@@ -165,9 +165,61 @@ function Guarantee() {
 }
 
 function FAQ() {
-  const [open, setOpen] = useState(0);
-  const items = ['O material é físico ou digital?', 'O que existe dentro dos +300 mapas?', 'Os mapas substituem um curso completo?', 'Posso estudar pelo celular?', 'Como recebo o acesso ao material?', 'Como funciona a garantia de 30 dias?'];
-  return <section id="faq" className="bg-[#F3F7FC] px-4 py-12 sm:py-16"><div className="mx-auto max-w-3xl"><h2 className="text-center text-3xl font-black text-slate-900 sm:text-4xl">Perguntas frequentes</h2><div className="mt-8 space-y-3">{items.map((q, i) => <div key={q} className="faq-card overflow-hidden rounded-2xl border border-slate-200 bg-white"><button type="button" onClick={() => setOpen(open === i ? -1 : i)} className="flex w-full items-center justify-between gap-4 p-5 text-left font-extrabold"><span>{q}</span><ChevronDown className={`h-5 w-5 transition-transform ${open === i ? 'rotate-180' : ''}`} /></button>{open === i && <div className="px-5 pb-5 text-sm leading-relaxed text-slate-600">{q === "Como recebo o acesso ao material?" ? "Após a confirmação do pagamento, você recebe o acesso ao material diretamente pelo WhatsApp." : "Informações detalhadas sobre o material e seu acesso digital."}</div>}</div>)}</div></div></section>;
+  const [open, setOpen] = useState<number | null>(0);
+  const items = [
+    {
+      question: 'O material é físico ou digital?',
+      answer: 'O material é 100% digital. Você recebe o acesso aos arquivos para estudar pelo celular, computador ou tablet, sem precisar esperar por entrega física.'
+    },
+    {
+      question: 'O que vem no Plano Completo?',
+      answer: 'O Plano Completo inclui os +300 Mapas Mentais de Ciência da Computação, organizados por áreas, além dos bônus exclusivos: Mapa Visual de Big-O, Guia Visual de Siglas de TI, Mapa de Comparativos, Checklist de Revisão e Caderno Visual de Pegadinhas.'
+    },
+    {
+      question: 'Qual é a diferença entre o Plano Essencial e o Plano Completo?',
+      answer: 'O Plano Essencial dá acesso aos +300 mapas, às 9 grandes áreas de estudo e ao conteúdo organizado por assunto. O Plano Completo reúne todo esse conteúdo e acrescenta os materiais bônus exclusivos para revisão.'
+    },
+    {
+      question: 'Posso estudar pelo celular?',
+      answer: 'Sim. O material foi preparado para acesso digital e pode ser consultado pelo celular, tablet ou computador.'
+    },
+    {
+      question: 'Como recebo o acesso ao material?',
+      answer: 'Após a confirmação do pagamento, você recebe as instruções de acesso diretamente pelo WhatsApp. É por lá que enviamos o material e orientamos você sobre como acessar.'
+    },
+    {
+      question: 'Como funciona a garantia de 30 dias?',
+      answer: 'Você tem 30 dias para conhecer o material. Caso ele não atenda às suas expectativas, pode solicitar o reembolso dentro das condições da plataforma de pagamento.'
+    }
+  ];
+
+  return (
+    <section id="faq" className="bg-[#F3F7FC] px-4 py-12 sm:py-16">
+      <div className="mx-auto max-w-3xl">
+        <h2 className="text-center text-3xl font-black text-slate-900 sm:text-4xl">PERGUNTAS FREQUENTES</h2>
+        <div className="mx-auto mt-8 max-w-2xl space-y-3">
+          {items.map((item, i) => (
+            <div key={item.question} className="faq-card overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <button
+                type="button"
+                onClick={() => setOpen(open === i ? null : i)}
+                className="flex w-full items-center justify-between gap-4 p-5 text-left font-extrabold text-slate-900"
+                aria-expanded={open === i}
+              >
+                <span>{item.question}</span>
+                <ChevronDown className={`h-5 w-5 shrink-0 transition-transform ${open === i ? 'rotate-180' : ''}`} />
+              </button>
+              <div className={`grid transition-all duration-300 ${open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                <div className="min-h-0 overflow-hidden px-5 pb-5 text-sm leading-relaxed text-slate-600">
+                  {item.answer}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function Footer() { return <footer className="bg-slate-950 px-4 py-8 text-center text-sm text-slate-400">© 2026 • +300 Mapas Mentais de Ciência da Computação</footer>; }
