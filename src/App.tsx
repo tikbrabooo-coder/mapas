@@ -120,14 +120,6 @@ function SocialProof() {
     'WhatsApp Image 2026-10-03 at 12.35.11 (1).jpeg',
     'WhatsApp Image 2026-10-03 at 12.35.29 (1).jpeg',
   ];
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setCurrent((index) => (index + 1) % testimonials.length);
-    }, 4000);
-    return () => window.clearInterval(timer);
-  }, []);
 
   const testimonialUrl = (filename: string) =>
     `https://raw.githubusercontent.com/tikbrabooo-coder/Teste-IMPORT/main/${encodeURIComponent(filename)}`;
@@ -136,36 +128,32 @@ function SocialProof() {
     <section className="bg-[#F0F4FA] px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-3xl">
         <h2 className="text-center text-2xl font-black text-slate-900 sm:text-4xl">QUEM ESTÁ ESTUDANDO TAMBÉM</h2>
+        <p className="mt-2 text-center text-sm font-semibold text-slate-500">Deslize para o lado e veja os depoimentos.</p>
 
-        <div className="mx-auto mt-8 max-w-xl overflow-hidden rounded-2xl">
-          <div
-            className="flex transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(-${current * 100}%)` }}
-          >
-            {testimonials.map((filename) => (
-              <div key={filename} className="w-full shrink-0">
+        <div className="mx-auto mt-6 max-w-xl overflow-x-auto rounded-2xl snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex gap-4 px-1">
+            {testimonials.map((filename, index) => (
+              <div
+                key={filename}
+                className="w-full shrink-0 snap-center"
+              >
                 <img
                   src={testimonialUrl(filename)}
-                  alt="Depoimento de cliente sobre os mapas mentais"
-                  className="block h-auto w-full rounded-2xl object-contain shadow-sm"
-                  loading="lazy"
+                  alt={`Depoimento ${index + 1} sobre os mapas mentais`}
+                  className="block h-auto w-full rounded-2xl object-contain shadow-sm select-none"
+                  loading={index === 0 ? 'eager' : 'lazy'}
                   decoding="async"
+                  draggable={false}
                 />
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-5 flex justify-center gap-2" aria-label="Navegação dos depoimentos">
-          {testimonials.map((filename, index) => (
-            <button
-              key={filename}
-              type="button"
-              onClick={() => setCurrent(index)}
-              aria-label={`Ver depoimento ${index + 1}`}
-              className={`h-2.5 rounded-full transition-all ${current === index ? 'w-7 bg-blue-600' : 'w-2.5 bg-slate-300'}`}
-            />
-          ))}
+        <div className="mt-4 flex justify-center gap-2">
+          <span className="h-2.5 w-7 rounded-full bg-blue-600" />
+          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
         </div>
       </div>
     </section>
