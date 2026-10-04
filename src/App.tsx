@@ -88,7 +88,7 @@ function MapsSection() {
 function Bonuses() {
   return (
     <section id="bonus-section" className="perf-section bg-[#EEF6FF] px-4 py-12 sm:py-16">
-      <div className="mx-auto max-w-6xl"><div className="mb-8 text-center"><h2 className="text-2xl font-black text-slate-900 sm:text-4xl">BÔNUS EXCLUSIVOS DO <span className="heading-accent-green">PLANO COMPLETO</span></h2><p className="mt-3 text-base text-slate-600 sm:text-lg">Além dos mapas principais, você recebe materiais extras para facilitar a revisão.</p></div>
+      <div className="mx-auto max-w-6xl"><div className="mb-8 text-center"><h2 className="text-2xl font-black text-slate-900 sm:text-4xl">BÔNUS EXCLUSIVOS</h2><p className="mt-3 text-base text-slate-600 sm:text-lg">Além dos mapas principais, você recebe materiais extras para facilitar a revisão.</p></div>
         <div className="flex gap-4 overflow-x-auto px-2 py-4 [scrollbar-width:none] sm:gap-6 sm:px-8">
           {bonuses.map(([title, source]) => <article key={title} className="bonus-card w-[82vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl"><div className="aspect-[4/3] overflow-hidden bg-slate-50"><img src={img(source)} alt={title} className="h-full w-full object-contain" loading="lazy" /></div><div className="p-5"><p className="text-base font-black">{title}</p><p className="mt-2 text-sm leading-relaxed text-slate-600">Material extra para consulta e revisão rápida.</p></div></article>)}
         </div>
@@ -133,18 +133,8 @@ function SocialProof() {
         <div className="mx-auto mt-6 max-w-xl overflow-x-auto rounded-2xl snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex gap-4 px-1">
             {testimonials.map((filename, index) => (
-              <div
-                key={filename}
-                className="w-full shrink-0 snap-center"
-              >
-                <img
-                  src={testimonialUrl(filename)}
-                  alt={`Depoimento ${index + 1} sobre os mapas mentais`}
-                  className="block h-auto w-full rounded-2xl object-contain shadow-sm select-none"
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  decoding="async"
-                  draggable={false}
-                />
+              <div key={filename} className="w-full shrink-0 snap-center">
+                <img src={testimonialUrl(filename)} alt={`Depoimento ${index + 1} sobre os mapas mentais`} className="block h-auto w-full rounded-2xl object-contain shadow-sm select-none" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" draggable={false} />
               </div>
             ))}
           </div>
@@ -167,30 +157,12 @@ function Guarantee() {
 function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   const items = [
-    {
-      question: 'O material é físico ou digital?',
-      answer: 'O material é 100% digital. Você recebe o acesso aos arquivos para estudar pelo celular, computador ou tablet, sem precisar esperar por entrega física.'
-    },
-    {
-      question: 'O que vem no Plano Completo?',
-      answer: 'O Plano Completo inclui os +300 Mapas Mentais de Ciência da Computação, organizados por áreas, além dos bônus exclusivos: Mapa Visual de Big-O, Guia Visual de Siglas de TI, Mapa de Comparativos, Checklist de Revisão e Caderno Visual de Pegadinhas.'
-    },
-    {
-      question: 'Qual é a diferença entre o Plano Essencial e o Plano Completo?',
-      answer: 'O Plano Essencial dá acesso aos +300 mapas, às 9 grandes áreas de estudo e ao conteúdo organizado por assunto. O Plano Completo reúne todo esse conteúdo e acrescenta os materiais bônus exclusivos para revisão.'
-    },
-    {
-      question: 'Posso estudar pelo celular?',
-      answer: 'Sim. O material foi preparado para acesso digital e pode ser consultado pelo celular, tablet ou computador.'
-    },
-    {
-      question: 'Como recebo o acesso ao material?',
-      answer: 'Após a confirmação do pagamento, você recebe as instruções de acesso diretamente pelo WhatsApp. É por lá que enviamos o material e orientamos você sobre como acessar.'
-    },
-    {
-      question: 'Como funciona a garantia de 30 dias?',
-      answer: 'Você tem 30 dias para conhecer o material. Caso ele não atenda às suas expectativas, pode solicitar o reembolso dentro das condições da plataforma de pagamento.'
-    }
+    { question: 'O material é físico ou digital?', answer: 'O material é 100% digital. Você recebe o acesso aos arquivos para estudar pelo celular, computador ou tablet, sem precisar esperar por entrega física.' },
+    { question: 'O que vem no Plano Completo?', answer: 'O Plano Completo inclui os +300 Mapas Mentais de Ciência da Computação, organizados por áreas, além dos bônus exclusivos: Mapa Visual de Big-O, Guia Visual de Siglas de TI, Mapa de Comparativos, Checklist de Revisão e Caderno Visual de Pegadinhas.' },
+    { question: 'Qual é a diferença entre o Plano Essencial e o Plano Completo?', answer: 'O Plano Essencial dá acesso aos +300 mapas, às 9 grandes áreas de estudo e ao conteúdo organizado por assunto. O Plano Completo reúne todo esse conteúdo e acrescenta os materiais bônus exclusivos para revisão.' },
+    { question: 'Posso estudar pelo celular?', answer: 'Sim. O material foi preparado para acesso digital e pode ser consultado pelo celular, tablet ou computador.' },
+    { question: 'Como recebo o acesso ao material?', answer: 'Após a confirmação do pagamento, você recebe as instruções de acesso diretamente pelo WhatsApp. É por lá que enviamos o material e orientamos você sobre como acessar.' },
+    { question: 'Como funciona a garantia de 30 dias?', answer: 'Você tem 30 dias para conhecer o material. Caso ele não atenda às suas expectativas, pode solicitar o reembolso dentro das condições da plataforma de pagamento.' }
   ];
 
   return (
@@ -200,26 +172,16 @@ function FAQ() {
         <div className="mx-auto mt-8 max-w-2xl space-y-3">
           {items.map((item, i) => (
             <div key={item.question} className="faq-card overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-              <button
-                type="button"
-                onClick={() => setOpen(open === i ? null : i)}
-                className="flex w-full items-center justify-between gap-4 p-5 text-left font-extrabold text-slate-900"
-                aria-expanded={open === i}
-              >
-                <span>{item.question}</span>
-                <ChevronDown className={`h-5 w-5 shrink-0 transition-transform ${open === i ? 'rotate-180' : ''}`} />
+              <button type="button" onClick={() => setOpen(open === i ? null : i)} className="flex w-full items-center justify-between gap-4 p-5 text-left font-extrabold text-slate-900" aria-expanded={open === i}>
+                <span>{item.question}</span><ChevronDown className={`h-5 w-5 shrink-0 transition-transform ${open === i ? 'rotate-180' : ''}`} />
               </button>
               <div className={`grid transition-all duration-300 ${open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
-                <div className="min-h-0 overflow-hidden px-5 pb-5 text-sm leading-relaxed text-slate-600">
-                  {item.answer}
-                </div>
+                <div className="min-h-0 overflow-hidden px-5 pb-5 text-sm leading-relaxed text-slate-600">{item.answer}</div>
               </div>
             </div>
           ))}
         </div>
-        <div className="mx-auto mt-8 max-w-md">
-          <Button href="#ofertas">QUERO VER AS OFERTAS</Button>
-        </div>
+        <div className="mx-auto mt-8 max-w-md"><Button href="#ofertas">QUERO VER AS OFERTAS</Button></div>
       </div>
     </section>
   );
@@ -231,67 +193,25 @@ function UpgradeModal({ open, onClose }: { open: boolean; onClose: () => void })
   if (!open) return null;
 
   const modal = (
-    <div
-      className="fixed inset-0 z-[2147483647] flex items-center justify-center bg-slate-950/75 p-4"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Oferta especial do Plano Completo"
-    >
+    <div className="fixed inset-0 z-[2147483647] flex items-center justify-center bg-slate-950/75 p-4" role="dialog" aria-modal="true" aria-label="Oferta especial do Plano Completo">
       <div className="relative max-h-[82vh] w-full max-w-sm overflow-y-auto rounded-[22px] bg-white p-4 shadow-2xl sm:max-h-[88vh] sm:p-7">
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Fechar oferta"
-          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200"
-        >
-          <X className="h-5 w-5" />
-        </button>
-
+        <button type="button" onClick={onClose} aria-label="Fechar oferta" className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200"><X className="h-5 w-5" /></button>
         <div className="pt-1 text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-50">
-            <Sparkles className="h-6 w-6 text-blue-600" />
-          </div>
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-50"><Sparkles className="h-6 w-6 text-blue-600" /></div>
           <p className="mt-3 text-[11px] font-black uppercase tracking-[0.14em] text-blue-700">Oferta especial</p>
-          <h2 className="mt-1.5 text-[21px] font-black leading-tight text-slate-900 sm:text-3xl">
-            Leve o Plano Completo por R$ 19,90
-          </h2>
-          <p className="mt-2 text-xs font-semibold leading-relaxed text-slate-600 sm:text-base">
-            Aproveite e leve o Plano Completo por <span className="font-black text-blue-700">R$ 7,10 a menos</span> que o valor normal de R$ 27,00.
-          </p>
+          <h2 className="mt-1.5 text-[21px] font-black leading-tight text-slate-900 sm:text-3xl">Leve o Plano Completo por R$ 19,90</h2>
+          <p className="mt-2 text-xs font-semibold leading-relaxed text-slate-600 sm:text-base">Aproveite e leve o Plano Completo por <span className="font-black text-blue-700">R$ 7,10 a menos</span> que o valor normal de R$ 27,00.</p>
         </div>
-
         <div className="mt-4 rounded-2xl bg-[#F0F4FA] p-3.5 sm:mt-5 sm:p-4">
           <p className="text-center text-xs font-black text-slate-900 sm:text-sm">Você recebe no Plano Completo:</p>
           <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2">
-            {[
-              '+300 Mapas Mentais',
-              '9 áreas de estudo',
-              'Arquitetura',
-              'Sistemas Operacionais',
-              'Redes de Computadores',
-              'Banco de Dados',
-              'Engenharia de Software',
-              '5 bônus exclusivos'
-            ].map(item => (
-              <p key={item} className="flex items-start gap-1.5 text-[12px] font-semibold leading-tight text-slate-700 sm:text-sm">
-                <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600" />
-                <span>{item}</span>
-              </p>
+            {['+300 Mapas Mentais', '9 áreas de estudo', 'Arquitetura', 'Sistemas Operacionais', 'Redes de Computadores', 'Banco de Dados', 'Engenharia de Software', '5 bônus exclusivos'].map(item => (
+              <p key={item} className="flex items-start gap-1.5 text-[12px] font-semibold leading-tight text-slate-700 sm:text-sm"><Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600" /><span>{item}</span></p>
             ))}
           </div>
         </div>
-
-        <div className="mt-4 sm:mt-5">
-          <Button href={CHECKOUTS.UPSELL}>QUERO ADQUIRIR PLANO COMPLETO POR 19,90</Button>
-        </div>
-
-        <a
-          href="#ofertas"
-          onClick={onClose}
-          className="mt-3 block w-full rounded-xl py-2 text-center text-xs font-black text-slate-600 transition hover:text-blue-600"
-        >
-          NÃO, QUERO LEVAR O PLANO DE R$ 10,00
-        </a>
+        <div className="mt-4 sm:mt-5"><Button href={CHECKOUTS.UPSELL}>QUERO ADQUIRIR PLANO COMPLETO POR 19,90</Button></div>
+        <a href="#ofertas" onClick={onClose} className="mt-3 block w-full rounded-xl py-2 text-center text-xs font-black text-slate-600 transition hover:text-blue-600">NÃO, QUERO LEVAR O PLANO DE R$ 10,00</a>
       </div>
     </div>
   );
