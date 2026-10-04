@@ -1,21 +1,21 @@
-/* Ajuste visual solicitado: topo/seção Hero em vermelho */
+/* Apenas a faixa superior de oferta deve ficar vermelha. */
 #hero-section {
-  background: #E53935 !important;
-  color: #ffffff !important;
+  background: #F0F4FA !important;
+  color: #1e293b !important;
 }
 
 #hero-section h1 {
-  color: #ffffff !important;
+  color: #0f172a !important;
 }
 
 #hero-section .hero-accent {
-  color: #ffffff !important;
+  color: #2563eb !important;
 }
 
 #hero-section p {
-  color: rgba(255, 255, 255, 0.92) !important;
+  color: #475569 !important;
 }
 
 #hero-section .text-slate-500 {
-  color: rgba(255, 255, 255, 0.82) !important;
+  color: #64748b !important;
 }
