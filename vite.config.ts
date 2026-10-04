@@ -9,6 +9,8 @@ export default defineConfig({
     host: '0.0.0.0',
   },
   build: {
-    target: 'es2020',
+    target: 'es2022',
+    cssMinify: 'lightningcss',
+    reportCompressedSize: true,
   },
 });
