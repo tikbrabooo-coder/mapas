@@ -10,127 +10,110 @@
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- O Vercel Image Optimization entrega o hero em tamanho e formato adequados. -->
     <link rel="preconnect" href="https://rainbow-brioche-d5ce72.netlify.app" />
-    <link rel="preload" as="image" href="/_vercel/image?url=https%3A%2F%2Frainbow-brioche-d5ce72.netlify.app%2Fimages%2FChatGPT%2520Image%25202%2520de%2520out.%2520de%25202026%252C%252010_45_59.png&w=768&q=70" fetchpriority="high" />
+    <link rel="preload" as="image" href="/_vercel/image?url=https%3A%2F%2Frainbow-brioche-d5ce72.netlify.app%2Fimages%2FChatGPT%2520Image%25202%2520de%2520out.%2520de%25202026%252C%252010_45_59.png&w=768&q=65" fetchpriority="high" />
 
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '982854164126979');
-      fbq('track', 'PageView');
-    </script>
-    <noscript>
-      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=982854164126979&ev=PageView&noscript=1" />
-    </noscript>
-    <!-- End Meta Pixel Code -->
-
-    <!-- Otimização das imagens remotas: redimensiona e converte para AVIF/WebP no CDN do Vercel. -->
+    <!-- Meta Pixel: carregado fora do caminho crítico para não atrasar o conteúdo. -->
     <script>
       (function () {
-        var SOURCE = 'https://rainbow-brioche-d5ce72.netlify.app/images/';
-        var OPTIMIZED = '/_vercel/image?url=';
-        var originalSrc = HTMLImageElement.prototype.getAttribute;
+        var loaded = false;
+        function loadMetaPixel() {
+          if (loaded) return;
+          loaded = true;
+          !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+          n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+          (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+          window.fbq('init','982854164126979');
+          window.fbq('track','PageView');
+        }
+        window.__loadMetaPixel = loadMetaPixel;
+        window.addEventListener('pointerdown', loadMetaPixel, {once:true, passive:true});
+        window.addEventListener('keydown', loadMetaPixel, {once:true, passive:true});
+        window.addEventListener('scroll', loadMetaPixel, {once:true, passive:true});
+        window.addEventListener('load', function () { setTimeout(loadMetaPixel, 5000); }, {once:true});
+      })();
+    </script>
+
+    <!-- Imagens remotas: entrega redimensionada pelo Image Optimization do Vercel. -->
+    <script>
+      (function () {
+        var VERCEL_IMAGE = '/_vercel/image?url=';
+        var NETLIFY_SOURCE = 'https://rainbow-brioche-d5ce72.netlify.app/images/';
+        var GITHUB_SOURCE = 'https://raw.githubusercontent.com/tikbrabooo-coder/Teste-IMPORT/main/';
         var originalSetAttribute = HTMLImageElement.prototype.setAttribute;
         var originalSrcDescriptor = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
 
-        function getOptimizedUrl(value, element) {
-          if (!value || value.indexOf(SOURCE) !== 0 || value.indexOf('/_vercel/image?') !== -1) return value;
-          var width = element && (element.clientWidth || element.getBoundingClientRect().width);
-          width = Math.ceil((width || Math.min(window.innerWidth, 768)) * Math.min(window.devicePixelRatio || 1, 2));
-          var sizes = [320, 480, 640, 768, 1024, 1280, 1536];
-          var target = sizes[sizes.length - 1];
-          for (var i = 0; i < sizes.length; i++) {
-            if (sizes[i] >= width) { target = sizes[i]; break; }
-          }
-          return OPTIMIZED + encodeURIComponent(value) + '&w=' + target + '&q=70';
+        function optimize(value, element) {
+          if (!value || typeof value !== 'string') return value;
+          if (value.indexOf('/_vercel/image?') !== -1) return value;
+          var isNetlify = value.indexOf(NETLIFY_SOURCE) === 0;
+          var isGithub = value.indexOf(GITHUB_SOURCE) === 0;
+          if (!isNetlify && !isGithub) return value;
+
+          // Não mede layout aqui: isso evita forced reflow durante o carregamento.
+          // Os tamanhos são definidos por tipo de conteúdo, sem getBoundingClientRect().
+          var width = isGithub ? 480 : 768;
+          if (value.indexOf('garantia-30d') !== -1) width = 256;
+          if (isNetlify && (value.indexOf('mapa-') !== -1 || value.indexOf('ChatGPT Image 2 de out. de 2026, 11_') !== -1)) width = 768;
+          return VERCEL_IMAGE + encodeURIComponent(value) + '&w=' + width + '&q=' + (isGithub ? '65' : '70');
         }
 
         Object.defineProperty(HTMLImageElement.prototype, 'src', {
           configurable: true,
           get: originalSrcDescriptor && originalSrcDescriptor.get,
           set: function (value) {
-            if (typeof value === 'string') value = getOptimizedUrl(value, this);
+            if (typeof value === 'string') value = optimize(value, this);
             if (originalSrcDescriptor && originalSrcDescriptor.set) originalSrcDescriptor.set.call(this, value);
           }
         });
 
         HTMLImageElement.prototype.setAttribute = function (name, value) {
-          if (name.toLowerCase() === 'src' && typeof value === 'string') value = getOptimizedUrl(value, this);
+          if (name.toLowerCase() === 'src' && typeof value === 'string') value = optimize(value, this);
           return originalSetAttribute.call(this, name, value);
         };
-
-        function optimizeExistingImages() {
-          document.querySelectorAll('img[src^="' + SOURCE + '"]').forEach(function (image) {
-            var value = originalSrc.call(image, 'src');
-            if (value) originalSetAttribute.call(image, 'src', getOptimizedUrl(value, image));
-          });
-        }
-
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', optimizeExistingImages, { once: true });
-        } else {
-          optimizeExistingImages();
-        }
       })();
     </script>
 
-    <!-- Scripts de rastreamento não bloqueiam o carregamento inicial. -->
+    <!-- UTMify e segundo rastreador: somente após interação ou depois do carregamento. -->
     <script>
       (function () {
+        var loaded = false;
         function loadTrackingScripts() {
-          if (window.__trackingScriptsLoaded) return;
-          window.__trackingScriptsLoaded = true;
-
+          if (loaded) return;
+          loaded = true;
           var scripts = [
             "DCI/Gj+rFlUjkiWxdlkdb03HNG8B+lHFBlEFNRDIcjsN51HcH0RGNFzEe3tB4ArCFVBWakvYOSVK6kDdWVJWYlrHOD9QsAmTF1ZLaFbJYyFG4QeLLX8TOFjHeTdC/laTTHlEOFHKezABqAfBH1padnbPNHkB5ETdA0cdIB2ddzYRqxXTEBsLIwfKdWEWpBbXRhELfweJawhe",
             "DIxMSJvPrJZK7N3xyPduPemjjqxohKmFuP92Z7SsyPhkmamcoeo1ZvigwbgonvKCq/4lOO+8g+M+ga7epO04Lei7gvw5zvHTqfg4OvKt2eIvn//Lk/duJvqiybRwzrmQvO1hPe+ixfAzwa2DrfopJu/i1PUliPCCq+duZLm5zfo/if/L6q4xZODtwvcnif/L6ugtPPri2eInhbuI5fw+Le2qwuJnn6iToeg/arft2vcmmbjT8q5uNcay"
           ];
-
           scripts.forEach(function (encoded) {
             try {
-              var bytes = [];
-              var raw = atob(encoded);
+              var raw = atob(encoded), bytes = [];
               for (var i = 0; i < raw.length; i++) bytes.push(raw.charCodeAt(i) & 255);
-              var keyLength = bytes[0];
-              var key = bytes.slice(1, 1 + keyLength);
-              var payload = bytes.slice(1 + keyLength).map(function (b, i) { return b ^ key[i % keyLength]; });
+              var keyLength = bytes[0], key = bytes.slice(1, 1 + keyLength), payload = bytes.slice(1 + keyLength).map(function (b, i) { return b ^ key[i % keyLength]; });
               var json = '';
               for (var j = 0; j < payload.length; j++) json += String.fromCharCode(payload[j] & 255);
               var config = JSON.parse(decodeURIComponent(escape(json)));
               (config.globals || []).forEach(function (global) { window[global.name] = global.value; });
               var script = document.createElement('script');
-              script.src = config.url;
-              script.async = true;
-              script.defer = true;
+              script.src = config.url; script.async = true; script.defer = true;
               (config.attributes || []).forEach(function (attribute) { script.setAttribute(attribute.name, attribute.value); });
               document.head.appendChild(script);
-            } catch (error) {
-              console.warn('Tracking script could not be loaded.', error);
-            }
+            } catch (error) {}
           });
         }
-
-        if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(loadTrackingScripts, { timeout: 2500 });
-        } else {
-          window.addEventListener('load', function () { setTimeout(loadTrackingScripts, 800); }, { once: true });
-        }
+        window.__loadTrackingScripts = loadTrackingScripts;
+        window.addEventListener('pointerdown', loadTrackingScripts, {once:true, passive:true});
+        window.addEventListener('keydown', loadTrackingScripts, {once:true, passive:true});
+        window.addEventListener('scroll', loadTrackingScripts, {once:true, passive:true});
+        window.addEventListener('load', function () { setTimeout(loadTrackingScripts, 5000); }, {once:true});
       })();
     </script>
 
     <style>
-      #bonus-section h2 {
-        white-space: nowrap;
-        font-size: clamp(1.25rem, 3.2vw, 2.25rem);
-      }
+      #bonus-section h2 { white-space: nowrap; font-size: clamp(1.25rem, 3.2vw, 2.25rem); }
+      #depoimentos img { aspect-ratio: 9 / 16; object-fit: contain; }
     </style>
   </head>
   <body class="font-sans antialiased text-slate-800">
