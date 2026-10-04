@@ -407,3 +407,85 @@ footer {
     background: linear-gradient(180deg,#F8F4FF 0%,#F8FAFD 100%) !important;
   }
 }
+
+/* Tipografia: base preta, com cor apenas nos destaques intencionais. */
+#hero-section h1,
+#mapas-preview h2,
+#bonus-section h2,
+#ofertas > div > h2,
+#depoimentos h2,
+#garantia h2,
+#faq h2 {
+  color: #111827 !important;
+}
+
+#hero-section h1 .hero-accent {
+  color: #2563EB !important;
+}
+
+#mapas-preview h2 .heading-accent-cyan {
+  color: #008FA3 !important;
+}
+
+#bonus-section h2 .heading-accent-green {
+  color: #0F9D77 !important;
+}
+
+#ofertas > div > h2 span {
+  color: #2563EB !important;
+}
+
+#depoimentos h2 .heading-accent-orange {
+  color: #EA6A1A !important;
+}
+
+#garantia h2 .heading-accent-green {
+  color: #0F9D77 !important;
+}
+
+#faq h2 .heading-accent-purple {
+  color: #7C3AED !important;
+}
+
+.pricing-card h3 {
+  color: #111827 !important;
+}
+
+.pricing-card .pricing-subtitle {
+  color: #2563EB !important;
+}
+
+.bonus-card p:first-of-type {
+  color: #111827 !important;
+}
+
+#mapas-preview .carousel-card > div > p {
+  color: #111827 !important;
+}
+
+#mapas-preview .carousel-card > div > p::first-letter {
+  color: #008FA3;
+}
+
+/* Mantém os textos de apoio neutros, sem excesso de cores. */
+#hero-section > div > p,
+#ofertas > div > p,
+#depoimentos > div > p,
+#bonus-section > div > div:first-child p,
+#garantia > div > div:last-child > p,
+#faq .faq-card div,
+.pricing-card .pricing-subtitle {
+  text-shadow: none !important;
+}
+
+@media (max-width:700px) {
+  #hero-section h1,
+  #mapas-preview h2,
+  #bonus-section h2,
+  #ofertas > div > h2,
+  #depoimentos h2,
+  #garantia h2,
+  #faq h2 {
+    color: #111827 !important;
+  }
+}
