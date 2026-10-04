@@ -57,7 +57,7 @@ const Button = ({ href, children, muted = false, onClick }: { href?: string; chi
 function Hero() {
   return (
     <>
-      <aside className="w-full bg-[#2563EB] px-3 py-2 text-center text-xs font-bold text-white sm:text-sm">
+      <aside className="w-full bg-[#E53935] px-3 py-2 text-center text-xs font-bold text-white sm:text-sm">
         <div className="mx-auto flex max-w-5xl items-center justify-center gap-2"><Clock className="h-4 w-4" /><span>⚡ Oferta por tempo limitado disponível apenas hoje</span></div>
       </aside>
       <section id="hero-section" className="bg-[#F0F4FA] px-4 pb-12 pt-8 text-slate-800 sm:pb-20 sm:pt-12">
