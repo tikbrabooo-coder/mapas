@@ -1,0 +1,21 @@
+/* Ajuste visual solicitado: topo/seção Hero em vermelho */
+#hero-section {
+  background: #E53935 !important;
+  color: #ffffff !important;
+}
+
+#hero-section h1 {
+  color: #ffffff !important;
+}
+
+#hero-section .hero-accent {
+  color: #ffffff !important;
+}
+
+#hero-section p {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+#hero-section .text-slate-500 {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
