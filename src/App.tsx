@@ -76,7 +76,7 @@ function Hero() {
 function MapsSection() {
   return (
     <section id="mapas-preview" className="perf-section bg-[#F7FAFF] px-4 py-12 sm:py-16">
-      <div className="mx-auto max-w-6xl"><h2 className="mb-8 text-center text-2xl font-black text-slate-900 sm:text-4xl">VEJA NA PRÁTICA UM POUCO DO QUE VOCÊ VAI RECEBER</h2>
+      <div className="mx-auto max-w-6xl"><h2 className="mb-8 text-center text-2xl font-black text-slate-900 sm:text-4xl">VEJA NA <span className="heading-accent-cyan">PRÁTICA</span> UM POUCO DO QUE VOCÊ VAI RECEBER</h2>
         <div className="flex snap-x snap-mandatory touch-auto gap-4 overflow-x-auto px-2 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6 sm:px-8">
           {maps.map(([title, source]) => <article key={title} className="carousel-card aspect-square w-[92vw] max-w-[680px] shrink-0 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl sm:w-[72vw] lg:w-[60vw]"><div className="flex h-full flex-col p-3 sm:p-4"><p className="mb-2 text-center text-xs font-extrabold uppercase tracking-wider text-blue-700 sm:text-sm">{title}</p><div className="flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-slate-50"><img src={img(source)} alt={title} className="h-full w-full object-contain" loading="lazy" /></div></div></article>)}
         </div>
@@ -88,7 +88,7 @@ function MapsSection() {
 function Bonuses() {
   return (
     <section id="bonus-section" className="perf-section bg-[#EEF6FF] px-4 py-12 sm:py-16">
-      <div className="mx-auto max-w-6xl"><div className="mb-8 text-center"><h2 className="text-2xl font-black text-slate-900 sm:text-4xl">BÔNUS EXCLUSIVOS DO PLANO COMPLETO</h2><p className="mt-3 text-base text-slate-600 sm:text-lg">Além dos mapas principais, você recebe materiais extras para facilitar a revisão.</p></div>
+      <div className="mx-auto max-w-6xl"><div className="mb-8 text-center"><h2 className="text-2xl font-black text-slate-900 sm:text-4xl">BÔNUS EXCLUSIVOS DO <span className="heading-accent-green">PLANO COMPLETO</span></h2><p className="mt-3 text-base text-slate-600 sm:text-lg">Além dos mapas principais, você recebe materiais extras para facilitar a revisão.</p></div>
         <div className="flex gap-4 overflow-x-auto px-2 py-4 [scrollbar-width:none] sm:gap-6 sm:px-8">
           {bonuses.map(([title, source]) => <article key={title} className="bonus-card w-[82vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl"><div className="aspect-[4/3] overflow-hidden bg-slate-50"><img src={img(source)} alt={title} className="h-full w-full object-contain" loading="lazy" /></div><div className="p-5"><p className="text-base font-black">{title}</p><p className="mt-2 text-sm leading-relaxed text-slate-600">Material extra para consulta e revisão rápida.</p></div></article>)}
         </div>
@@ -127,7 +127,7 @@ function SocialProof() {
   return (
     <section id="depoimentos" className="bg-[#F8FBFF] px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-3xl">
-        <h2 className="text-center text-2xl font-black text-slate-900 sm:text-4xl">QUEM ESTÁ ESTUDANDO TAMBÉM</h2>
+        <h2 className="text-center text-2xl font-black text-slate-900 sm:text-4xl">QUEM ESTÁ <span className="heading-accent-orange">ESTUDANDO TAMBÉM</span></h2>
         <p className="mt-2 text-center text-sm font-semibold text-slate-500">Deslize para o lado e veja os depoimentos.</p>
 
         <div className="mx-auto mt-6 max-w-xl overflow-x-auto rounded-2xl snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -161,7 +161,7 @@ function SocialProof() {
 }
 
 function Guarantee() {
-  return <section id="garantia" className="perf-section bg-[#F0F4FA] px-4 py-8 sm:py-12"><div className="mx-auto grid max-w-5xl items-center gap-7 rounded-3xl border border-slate-200 bg-white p-6 shadow-md sm:p-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-8"><div className="flex justify-center"><img src={img('garantia-30d.jpg')} alt="Selo de garantia de 30 dias" className="h-44 w-44 object-contain sm:h-52 sm:w-52" loading="lazy" /></div><div><h2 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">VOCÊ TEM 30 DIAS DE GARANTIA INCONDICIONAL</h2><p className="mt-4 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">Após realizar a compra, você poderá acessar, baixar e explorar todos os +300 Mapas Mentais de Ciência da Computação e todos os bônus. Se por qualquer motivo você achar que o material não atende às suas expectativas, basta solicitar o reembolso integral dentro de 30 dias com apenas 1 clique.</p><p className="mt-5 flex items-center gap-2 text-sm font-bold text-blue-700 sm:text-base"><ShieldCheck className="h-5 w-5 shrink-0 text-blue-600" />Seu risco é absolutamente zero. Garantia blindada de 30 dias.</p></div></div></section>;
+  return <section id="garantia" className="perf-section bg-[#F0F4FA] px-4 py-8 sm:py-12"><div className="mx-auto grid max-w-5xl items-center gap-7 rounded-3xl border border-slate-200 bg-white p-6 shadow-md sm:p-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-8"><div className="flex justify-center"><img src={img('garantia-30d.jpg')} alt="Selo de garantia de 30 dias" className="h-44 w-44 object-contain sm:h-52 sm:w-52" loading="lazy" /></div><div><h2 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">VOCÊ TEM <span className="heading-accent-green">30 DIAS</span> DE GARANTIA INCONDICIONAL</h2><p className="mt-4 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">Após realizar a compra, você poderá acessar, baixar e explorar todos os +300 Mapas Mentais de Ciência da Computação e todos os bônus. Se por qualquer motivo você achar que o material não atende às suas expectativas, basta solicitar o reembolso integral dentro de 30 dias com apenas 1 clique.</p><p className="mt-5 flex items-center gap-2 text-sm font-bold text-blue-700 sm:text-base"><ShieldCheck className="h-5 w-5 shrink-0 text-blue-600" />Seu risco é absolutamente zero. Garantia blindada de 30 dias.</p></div></div></section>;
 }
 
 function FAQ() {
@@ -196,7 +196,7 @@ function FAQ() {
   return (
     <section id="faq" className="bg-[#F3F7FC] px-4 py-12 sm:py-16">
       <div className="mx-auto max-w-3xl">
-        <h2 className="text-center text-3xl font-black text-slate-900 sm:text-4xl">PERGUNTAS FREQUENTES</h2>
+        <h2 className="text-center text-3xl font-black text-slate-900 sm:text-4xl">PERGUNTAS <span className="heading-accent-purple">FREQUENTES</span></h2>
         <div className="mx-auto mt-8 max-w-2xl space-y-3">
           {items.map((item, i) => (
             <div key={item.question} className="faq-card overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
