@@ -285,13 +285,13 @@ function UpgradeModal({ open, onClose }: { open: boolean; onClose: () => void })
           <Button href={CHECKOUTS.UPSELL}>QUERO ADQUIRIR PLANO COMPLETO POR 19,90</Button>
         </div>
 
-        <button
-          type="button"
+        <a
+          href="#ofertas"
           onClick={onClose}
-          className="mt-3 w-full rounded-xl py-2 text-xs font-bold text-slate-500 hover:text-slate-700"
+          className="mt-3 block w-full rounded-xl py-2 text-center text-xs font-black text-slate-600 transition hover:text-blue-600"
         >
-          Agora não
-        </button>
+          NÃO, QUERO LEVAR O PLANO DE R$ 10,00
+        </a>
       </div>
     </div>
   );
