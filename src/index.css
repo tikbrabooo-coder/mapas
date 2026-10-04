@@ -746,3 +746,8 @@ footer {
       linear-gradient(160deg,#F5F9FF 0%,#FBFDFF 58%,#F1F7FF 100%) !important;
   }
 }
+
+/* Faixa superior da Hero: vermelho fixo para o aviso de oferta limitada. */
+.dark-tech-shell > aside:first-child {
+  background: #E53935 !important;
+}
