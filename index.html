@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>+300 Mapas Mentais de Ciência da Computação</title>
+    <title>+150 Mapas Mentais de Ciência da Computação</title>
     <meta name="description" content="Revise os principais conceitos da Ciência da Computação de forma visual, organizada e sem se perder em conteúdos extensos." />
-    <meta property="og:title" content="+300 Mapas Mentais de Ciência da Computação" />
+    <meta property="og:title" content="+150 Mapas Mentais de Ciência da Computação" />
     <meta property="og:description" content="Material visual e prático para estudo e revisão." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Pré-carrega somente o recurso crítico do LCP. -->
+    <!-- O Vercel Image Optimization entrega o hero em tamanho e formato adequados. -->
     <link rel="preconnect" href="https://rainbow-brioche-d5ce72.netlify.app" />
-    <link rel="preload" as="image" href="https://rainbow-brioche-d5ce72.netlify.app/images/ChatGPT%20Image%202%20de%20out.%20de%202026%2C%2010_45_59.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/_vercel/image?url=https%3A%2F%2Frainbow-brioche-d5ce72.netlify.app%2Fimages%2FChatGPT%2520Image%25202%2520de%2520out.%2520de%25202026%252C%252010_45_59.png&w=768&q=70" fetchpriority="high" />
 
     <!-- Meta Pixel Code -->
     <script>
@@ -32,7 +32,57 @@
     </noscript>
     <!-- End Meta Pixel Code -->
 
-    <!-- Scripts de rastreamento não bloqueiam mais o carregamento inicial. -->
+    <!-- Otimização das imagens remotas: redimensiona e converte para AVIF/WebP no CDN do Vercel. -->
+    <script>
+      (function () {
+        var SOURCE = 'https://rainbow-brioche-d5ce72.netlify.app/images/';
+        var OPTIMIZED = '/_vercel/image?url=';
+        var originalSrc = HTMLImageElement.prototype.getAttribute;
+        var originalSetAttribute = HTMLImageElement.prototype.setAttribute;
+        var originalSrcDescriptor = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
+
+        function getOptimizedUrl(value, element) {
+          if (!value || value.indexOf(SOURCE) !== 0 || value.indexOf('/_vercel/image?') !== -1) return value;
+          var width = element && (element.clientWidth || element.getBoundingClientRect().width);
+          width = Math.ceil((width || Math.min(window.innerWidth, 768)) * Math.min(window.devicePixelRatio || 1, 2));
+          var sizes = [320, 480, 640, 768, 1024, 1280, 1536];
+          var target = sizes[sizes.length - 1];
+          for (var i = 0; i < sizes.length; i++) {
+            if (sizes[i] >= width) { target = sizes[i]; break; }
+          }
+          return OPTIMIZED + encodeURIComponent(value) + '&w=' + target + '&q=70';
+        }
+
+        Object.defineProperty(HTMLImageElement.prototype, 'src', {
+          configurable: true,
+          get: originalSrcDescriptor && originalSrcDescriptor.get,
+          set: function (value) {
+            if (typeof value === 'string') value = getOptimizedUrl(value, this);
+            if (originalSrcDescriptor && originalSrcDescriptor.set) originalSrcDescriptor.set.call(this, value);
+          }
+        });
+
+        HTMLImageElement.prototype.setAttribute = function (name, value) {
+          if (name.toLowerCase() === 'src' && typeof value === 'string') value = getOptimizedUrl(value, this);
+          return originalSetAttribute.call(this, name, value);
+        };
+
+        function optimizeExistingImages() {
+          document.querySelectorAll('img[src^="' + SOURCE + '"]').forEach(function (image) {
+            var value = originalSrc.call(image, 'src');
+            if (value) originalSetAttribute.call(image, 'src', getOptimizedUrl(value, image));
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', optimizeExistingImages, { once: true });
+        } else {
+          optimizeExistingImages();
+        }
+      })();
+    </script>
+
+    <!-- Scripts de rastreamento não bloqueiam o carregamento inicial. -->
     <script>
       (function () {
         function loadTrackingScripts() {
