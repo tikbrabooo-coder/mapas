@@ -37,6 +37,29 @@
       })();
     </script>
 
+    <!-- Redirecionamento dos checkouts dos planos. O tratamento ocorre no capture para preservar o fluxo do React. -->
+    <script>
+      (function () {
+        var CHECKOUT_MAP = {
+          'https://app.zuptos.com.br/checkout/3964ebc0548af57e': 'https://app.zuptos.com.br/checkout/40d7bf7e99b9c963',
+          'https://app.zuptos.com.br/checkout/58864c8277caafae': 'https://app.zuptos.com.br/checkout/dc9508e2442481d9'
+        };
+        document.addEventListener('click', function (event) {
+          var target = event.target;
+          var anchor = target && target.closest ? target.closest('a') : null;
+          if (!anchor) return;
+          var href = anchor.getAttribute('href');
+          if (!href || !CHECKOUT_MAP[href]) return;
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          var destination = new URL(CHECKOUT_MAP[href]);
+          var params = new URLSearchParams(window.location.search);
+          params.forEach(function (value, key) { if (value) destination.searchParams.set(key, value); });
+          window.location.assign(destination.toString());
+        }, true);
+      })();
+    </script>
+
     <!-- Otimização somente para imagens da biblioteca Netlify. Depoimentos do GitHub e selo de garantia permanecem com URL direta para garantir compatibilidade. -->
     <script>
       (function () {
