@@ -11,6 +11,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://rainbow-brioche-d5ce72.netlify.app" />
+    <link rel="preconnect" href="https://raw.githubusercontent.com" />
     <link rel="preload" as="image" href="/_vercel/image?url=https%3A%2F%2Frainbow-brioche-d5ce72.netlify.app%2Fimages%2FChatGPT%2520Image%25202%2520de%2520out.%2520de%25202026%252C%252010_45_59.png&w=768&q=65" fetchpriority="high" />
 
     <!-- Meta Pixel: carregado fora do caminho crítico para não atrasar o conteúdo. -->
@@ -36,41 +37,34 @@
       })();
     </script>
 
-    <!-- Imagens remotas: entrega redimensionada pelo Image Optimization do Vercel. -->
+    <!-- Otimização somente para imagens da biblioteca Netlify. Depoimentos do GitHub e selo de garantia permanecem com URL direta para garantir compatibilidade. -->
     <script>
       (function () {
         var VERCEL_IMAGE = '/_vercel/image?url=';
         var NETLIFY_SOURCE = 'https://rainbow-brioche-d5ce72.netlify.app/images/';
-        var GITHUB_SOURCE = 'https://raw.githubusercontent.com/tikbrabooo-coder/Teste-IMPORT/main/';
         var originalSetAttribute = HTMLImageElement.prototype.setAttribute;
         var originalSrcDescriptor = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
 
-        function optimize(value, element) {
+        function optimize(value) {
           if (!value || typeof value !== 'string') return value;
-          if (value.indexOf('/_vercel/image?') !== -1) return value;
-          var isNetlify = value.indexOf(NETLIFY_SOURCE) === 0;
-          var isGithub = value.indexOf(GITHUB_SOURCE) === 0;
-          if (!isNetlify && !isGithub) return value;
-
-          // Não mede layout aqui: isso evita forced reflow durante o carregamento.
-          // Os tamanhos são definidos por tipo de conteúdo, sem getBoundingClientRect().
-          var width = isGithub ? 480 : 768;
-          if (value.indexOf('garantia-30d') !== -1) width = 256;
-          if (isNetlify && (value.indexOf('mapa-') !== -1 || value.indexOf('ChatGPT Image 2 de out. de 2026, 11_') !== -1)) width = 768;
-          return VERCEL_IMAGE + encodeURIComponent(value) + '&w=' + width + '&q=' + (isGithub ? '65' : '70');
+          if (value.indexOf('/_vercel/image?') !== -1 || value.indexOf(NETLIFY_SOURCE) !== 0) return value;
+          if (value.indexOf('garantia-30d') !== -1) return value;
+          var width = 768;
+          if (value.indexOf('mapa-') !== -1 || value.indexOf('ChatGPT Image 2 de out. de 2026, 11_') !== -1) width = 768;
+          return VERCEL_IMAGE + encodeURIComponent(value) + '&w=' + width + '&q=70';
         }
 
         Object.defineProperty(HTMLImageElement.prototype, 'src', {
           configurable: true,
           get: originalSrcDescriptor && originalSrcDescriptor.get,
           set: function (value) {
-            if (typeof value === 'string') value = optimize(value, this);
+            if (typeof value === 'string') value = optimize(value);
             if (originalSrcDescriptor && originalSrcDescriptor.set) originalSrcDescriptor.set.call(this, value);
           }
         });
 
         HTMLImageElement.prototype.setAttribute = function (name, value) {
-          if (name.toLowerCase() === 'src' && typeof value === 'string') value = optimize(value, this);
+          if (name.toLowerCase() === 'src' && typeof value === 'string') value = optimize(value);
           return originalSetAttribute.call(this, name, value);
         };
       })();
@@ -113,7 +107,6 @@
 
     <style>
       #bonus-section h2 { white-space: nowrap; font-size: clamp(1.25rem, 3.2vw, 2.25rem); }
-      #depoimentos img { aspect-ratio: 9 / 16; object-fit: contain; }
     </style>
   </head>
   <body class="font-sans antialiased text-slate-800">
