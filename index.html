@@ -64,13 +64,23 @@
           var element = target && target.closest ? target.closest('a,button') : null;
           if (!element) return;
           var text = (element.textContent || '').replace(/\s+/g, ' ').trim().toUpperCase();
-          if (text !== 'NÃO, QUERO LEVAR O PLANO DE R$ 9,90') return;
-          event.preventDefault();
-          event.stopImmediatePropagation();
-          var destination = new URL('https://app.zuptos.com.br/checkout/597422a2be19f26c');
-          var params = new URLSearchParams(window.location.search);
-          params.forEach(function (value, key) { if (value) destination.searchParams.set(key, value); });
-          window.location.assign(destination.toString());
+          if (text === 'NÃO, QUERO LEVAR O PLANO DE R$ 9,90') {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            var basicDestination = new URL('https://app.zuptos.com.br/checkout/597422a2be19f26c');
+            var basicParams = new URLSearchParams(window.location.search);
+            basicParams.forEach(function (value, key) { if (value) basicDestination.searchParams.set(key, value); });
+            window.location.assign(basicDestination.toString());
+            return;
+          }
+          if (text === 'QUERO ADQUIRIR PLANO COMPLETO POR 19,90') {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            var completeDestination = new URL('https://app.zuptos.com.br/checkout/dc9508e2442481d9');
+            var completeParams = new URLSearchParams(window.location.search);
+            completeParams.forEach(function (value, key) { if (value) completeDestination.searchParams.set(key, value); });
+            window.location.assign(completeDestination.toString());
+          }
         }, true);
       })();
     </script>
