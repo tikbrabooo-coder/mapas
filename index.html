@@ -61,8 +61,38 @@
         function go(destinationUrl, name, value) {
           var tracked = trackInitiateCheckout(name, value);
           var destination = new URL(destinationUrl);
-          var params = new URLSearchParams(window.location.search);
-          params.forEach(function (value, key) { if (value) destination.searchParams.set(key, value); });
+
+          // Preserve attribution parameters on the external Zuptos checkout.
+          // The checkout is hosted by Zuptos, so its page cannot be modified from this Vercel site.
+          // We therefore forward the original UTM/click identifiers explicitly.
+          var attributionKeys = [
+            'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+            'utm_id', 'utm_source_platform', 'utm_campaign_id', 'utm_adset_id',
+            'utm_ad_id', 'fbclid', 'gclid', 'gbraid', 'wbraid', 'ttclid', 'msclkid'
+          ];
+          var currentParams = new URLSearchParams(window.location.search);
+
+          // Keep a session copy so attribution survives intermediate URL changes.
+          try {
+            attributionKeys.forEach(function (key) {
+              var value = currentParams.get(key);
+              if (value) sessionStorage.setItem('mapas_attr_' + key, value);
+            });
+          } catch (error) {}
+
+          attributionKeys.forEach(function (key) {
+            var value = currentParams.get(key);
+            if (!value) {
+              try { value = sessionStorage.getItem('mapas_attr_' + key); } catch (error) {}
+            }
+            if (value) destination.searchParams.set(key, value);
+          });
+
+          // Keep any other query parameters already present on the landing page too.
+          currentParams.forEach(function (value, key) {
+            if (value && !destination.searchParams.has(key)) destination.searchParams.set(key, value);
+          });
+
           // Give the Meta Pixel a moment to queue/send InitiateCheckout before leaving the page.
           window.setTimeout(function () {
             window.location.assign(destination.toString());
