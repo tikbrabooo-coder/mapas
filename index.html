@@ -42,11 +42,31 @@
           'https://app.zuptos.com.br/checkout/3964ebc0548af57e': 'https://app.zuptos.com.br/checkout/40d7bf7e99b9c963',
           'https://app.zuptos.com.br/checkout/58864c8277caafae': 'https://app.zuptos.com.br/checkout/40d7bf7e99b9c963'
         };
-        function go(destinationUrl) {
+        function trackInitiateCheckout(name, value) {
+          try {
+            if (typeof window.__loadMetaPixel === 'function') window.__loadMetaPixel();
+            if (typeof window.fbq === 'function') {
+              window.fbq('track', 'InitiateCheckout', {
+                content_name: name || 'Plano',
+                content_type: 'product',
+                currency: 'BRL',
+                value: value || undefined
+              });
+              return true;
+            }
+          } catch (error) {}
+          return false;
+        }
+
+        function go(destinationUrl, name, value) {
+          var tracked = trackInitiateCheckout(name, value);
           var destination = new URL(destinationUrl);
           var params = new URLSearchParams(window.location.search);
           params.forEach(function (value, key) { if (value) destination.searchParams.set(key, value); });
-          window.location.assign(destination.toString());
+          // Give the Meta Pixel a moment to queue/send InitiateCheckout before leaving the page.
+          window.setTimeout(function () {
+            window.location.assign(destination.toString());
+          }, tracked ? 300 : 0);
         }
         document.addEventListener('click', function (event) {
           var target = event.target;
@@ -56,20 +76,20 @@
           if (href && CHECKOUT_MAP[href]) {
             event.preventDefault();
             event.stopImmediatePropagation();
-            go(CHECKOUT_MAP[href]);
+            go(CHECKOUT_MAP[href], 'Plano Completo', 19.90);
             return;
           }
           var text = (element.textContent || '').replace(/\s+/g, ' ').trim().toUpperCase();
           if (text === 'NÃO, QUERO LEVAR O PLANO DE R$ 9,90') {
             event.preventDefault();
             event.stopImmediatePropagation();
-            go('https://app.zuptos.com.br/checkout/597422a2be19f26c');
+            go('https://app.zuptos.com.br/checkout/597422a2be19f26c', 'Plano Essencial', 9.90);
             return;
           }
           if (text === 'QUERO ADQUIRIR PLANO COMPLETO POR 19,90') {
             event.preventDefault();
             event.stopImmediatePropagation();
-            go('https://app.zuptos.com.br/checkout/40d7bf7e99b9c963');
+            go('https://app.zuptos.com.br/checkout/40d7bf7e99b9c963', 'Plano Completo', 19.90);
           }
         }, true);
       })();
