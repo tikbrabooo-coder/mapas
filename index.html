@@ -93,10 +93,11 @@
             if (value && !destination.searchParams.has(key)) destination.searchParams.set(key, value);
           });
 
-          // Give the Meta Pixel a moment to queue/send InitiateCheckout before leaving the page.
+          // Give the Meta Pixel enough time to initialize and send InitiateCheckout before leaving the page.
+          // The checkout is external, so navigating immediately can cancel the pixel request.
           window.setTimeout(function () {
             window.location.assign(destination.toString());
-          }, tracked ? 300 : 0);
+          }, tracked ? 800 : 0);
         }
         document.addEventListener('click', function (event) {
           var target = event.target;
