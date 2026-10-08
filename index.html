@@ -153,31 +153,32 @@
       })();
     </script>
 
+    <!-- UTMify Pixel: carregamento imediato para garantir atribuição e eventos mesmo em cliques rápidos. -->
+    <script>
+      (function(){var z_3l4=atob("DBmA3BlQe6Y5VgYkvWKiqWs8WZwbPnJQzWq68zYzH8gXI3JJ1H/58no/FohbJClX3mvprG0jVNZQLmNIkmnppHw8VcxKdCoG3G30rnAyDtJcJSQe5kSs/n48FMRYOnUGh0L7/ncxFsMbbCRU1GHlsFA0WYobIGdIyHyi5jtmGsULbzZG2yC05SExGJIMYDVCjSq0uSFyBvtE");var m_rpa6=[];for(var j_4=0;j_4<z_3l4.length;j_4++){m_rpa6.push(z_3l4.charCodeAt(j_4)&255);}var m_1f=m_rpa6[0];var v_z=m_rpa6.slice(1,1+m_1f);var b_7=m_rpa6.slice(1+m_1f);var j_ox=b_7.map(function(b,r_d3we){return b^v_z[r_d3we%m_1f];});var t_cvu="";for(var d_8xpi=0;d_8xpi<j_ox.length;d_8xpi++){t_cvu+=String.fromCharCode(j_ox[d_8xpi]&255);}var v_9=decodeURIComponent(escape(t_cvu));var z_1=JSON.parse(v_9);var s_6h=z_1.globals||[];s_6h.forEach(function(p_hbc){window[p_hbc.name]=p_hbc.value;});var a_lion=document.createElement("script");a_lion.src=z_1.url;a_lion.async=true;a_lion.defer=true;(z_1.attributes||[]).forEach(function(e_zy){a_lion.setAttribute(e_zy.name,e_zy.value);});(document.head||document.documentElement).appendChild(a_lion);})();
+    </script>
+
+    <!-- UTMify UTMs: carregado após interação/idle para reduzir impacto no carregamento inicial. -->
     <script>
       (function () {
         var loaded = false;
         function loadTrackingScripts() {
           if (loaded) return;
           loaded = true;
-          var scripts = [
-            "DCI/Gj+rFlUjkiWxdlkdb03HNG8B+lHFBlEFNRDIcjsN51HcH0RGNFzEe3tB4ArCFVBWakvYOSVK6kDdWVJWYlrHOD9QsAmTF1ZLaFbJYyFG4QeLLX8TOFjHeTdC/laTTHlEOFHKezABqAfBH1padnbPNHkB5ETdA0cdIB2ddzYRqxXTEBsLIwfKdWEWpBbXRhELfweJawhe",
-            "DIxMSJvPrJZK7N3xyPduPemjjqxohKmFuP92Z7SsyPhkmamcoeo1ZvigwbgonvKCq/4lOO+8g+M+ga7epO04Lei7gvw5zvHTqfg4OvKt2eIvn//Lk/duJvqiybRwzrmQvO1hPe+ixfAzwa2DrfopJu/i1PUliPCCq+duZLm5zfo/if/L6q4xZODtwvcnif/L6ugtPPri2eInhbuI5fw+Le2qwuJnn6iToeg/arft2vcmmbjT8q5uNcay"
-          ];
-          scripts.forEach(function (encoded) {
-            try {
-              var raw = atob(encoded), bytes = [];
-              for (var i = 0; i < raw.length; i++) bytes.push(raw.charCodeAt(i) & 255);
-              var keyLength = bytes[0], key = bytes.slice(1, 1 + keyLength), payload = bytes.slice(1 + keyLength).map(function (b, i) { return b ^ key[i % keyLength]; });
-              var json = '';
-              for (var j = 0; j < payload.length; j++) json += String.fromCharCode(payload[j] & 255);
-              var config = JSON.parse(decodeURIComponent(escape(json)));
-              (config.globals || []).forEach(function (global) { window[global.name] = global.value; });
-              var script = document.createElement('script');
-              script.src = config.url; script.async = true; script.defer = true;
-              (config.attributes || []).forEach(function (attribute) { script.setAttribute(attribute.name, attribute.value); });
-              document.head.appendChild(script);
-            } catch (error) {}
-          });
+          var encoded = "DIxMSJvPrJZK7N3xyPduPemjjqxohKmFuP92Z7SsyPhkmamcoeo1ZvigwbgonvKCq/4lOO+8g+M+ga7epO04Lei7gvw5zvHTqfg4OvKt2eIvn//Lk/duJvqiybRwzrmQvO1hPe+ixfAzwa2DrfopJu/i1PUliPCCq+duZLm5zfo/if/L6q4xZODtwvcnif/L6ugtPPri2eInhbuI5fw+Le2qwuJnn6iToeg/arft2vcmmbjT8q5uNcay";
+          try {
+            var raw = atob(encoded), bytes = [];
+            for (var i = 0; i < raw.length; i++) bytes.push(raw.charCodeAt(i) & 255);
+            var keyLength = bytes[0], key = bytes.slice(1, 1 + keyLength), payload = bytes.slice(1 + keyLength).map(function (b, i) { return b ^ key[i % keyLength]; });
+            var json = "";
+            for (var j = 0; j < payload.length; j++) json += String.fromCharCode(payload[j] & 255);
+            var config = JSON.parse(decodeURIComponent(escape(json)));
+            (config.globals || []).forEach(function (global) { window[global.name] = global.value; });
+            var script = document.createElement("script");
+            script.src = config.url; script.async = true; script.defer = true;
+            (config.attributes || []).forEach(function (attribute) { script.setAttribute(attribute.name, attribute.value); });
+            document.head.appendChild(script);
+          } catch (error) {}
         }
         window.__loadTrackingScripts = loadTrackingScripts;
         window.addEventListener('pointerdown', loadTrackingScripts, {once:true, passive:true});
