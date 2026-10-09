@@ -76,11 +76,17 @@
         }
 
         function go(destinationUrl, name, value) {
+          // Debounce only the same rapid click; always release the lock so later attempts work.
           if (navigating) return;
           navigating = true;
           var destination;
-          try { destination = getAttribution(new URL(destinationUrl, window.location.href)); }
-          catch (error) { navigating = false; window.location.assign(destinationUrl); return; }
+          try {
+            destination = getAttribution(new URL(destinationUrl, window.location.href));
+          } catch (error) {
+            navigating = false;
+            window.location.assign(destinationUrl);
+            return;
+          }
 
           var pixelReady = loadMetaPixel();
           if (pixelReady) {
@@ -94,10 +100,13 @@
             } catch (error) {}
           }
 
-          // Wait briefly so the browser can dispatch the Pixel request before leaving for the external checkout.
+          // Moderate delay for the Pixel request, then navigate. Unlock even if navigation is blocked.
           window.setTimeout(function () {
             window.location.assign(destination.toString());
-          }, 1000);
+          }, 600);
+          window.setTimeout(function () {
+            navigating = false;
+          }, 900);
         }
 
         // Shared function for any checkout button rendered by the React app.
