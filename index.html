@@ -108,7 +108,7 @@
           var element = target && target.closest ? target.closest('a,button') : null;
           if (!element) return;
           var href = element.getAttribute('href') || '';
-          var text = (element.textContent || '').replace(/\\s+/g, ' ').trim().toUpperCase();
+          var text = (element.textContent || '').replace(/\s+/g, ' ').trim().toUpperCase();
           var destination = href;
           var name = 'Plano';
           var value;
