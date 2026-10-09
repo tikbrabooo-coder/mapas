@@ -42,86 +42,107 @@
           'https://app.zuptos.com.br/checkout/3964ebc0548af57e': 'https://app.zuptos.com.br/checkout/40d7bf7e99b9c963',
           'https://app.zuptos.com.br/checkout/58864c8277caafae': 'https://app.zuptos.com.br/checkout/40d7bf7e99b9c963'
         };
-        function trackInitiateCheckout(name, value) {
-          try {
-            if (typeof window.__loadMetaPixel === 'function') window.__loadMetaPixel();
-            if (typeof window.fbq === 'function') {
-              window.fbq('track', 'InitiateCheckout', {
-                content_name: name || 'Plano',
-                content_type: 'product',
-                currency: 'BRL',
-                value: value || undefined
-              });
-              return true;
-            }
-          } catch (error) {}
-          return false;
+        var navigating = false;
+
+        function loadMetaPixel() {
+          if (typeof window.__loadMetaPixel === 'function') window.__loadMetaPixel();
+          return typeof window.fbq === 'function';
         }
 
-        function go(destinationUrl, name, value) {
-          var tracked = trackInitiateCheckout(name, value);
-          var destination = new URL(destinationUrl);
-
-          // Preserve attribution parameters on the external Zuptos checkout.
-          // The checkout is hosted by Zuptos, so its page cannot be modified from this Vercel site.
-          // We therefore forward the original UTM/click identifiers explicitly.
-          var attributionKeys = [
+        function getAttribution(destination) {
+          var keys = [
             'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
             'utm_id', 'utm_source_platform', 'utm_campaign_id', 'utm_adset_id',
             'utm_ad_id', 'fbclid', 'gclid', 'gbraid', 'wbraid', 'ttclid', 'msclkid'
           ];
-          var currentParams = new URLSearchParams(window.location.search);
-
-          // Keep a session copy so attribution survives intermediate URL changes.
+          var current = new URLSearchParams(window.location.search);
           try {
-            attributionKeys.forEach(function (key) {
-              var value = currentParams.get(key);
+            keys.forEach(function (key) {
+              var value = current.get(key);
               if (value) sessionStorage.setItem('mapas_attr_' + key, value);
             });
           } catch (error) {}
-
-          attributionKeys.forEach(function (key) {
-            var value = currentParams.get(key);
+          keys.forEach(function (key) {
+            var value = current.get(key);
             if (!value) {
               try { value = sessionStorage.getItem('mapas_attr_' + key); } catch (error) {}
             }
             if (value) destination.searchParams.set(key, value);
           });
-
-          // Keep any other query parameters already present on the landing page too.
-          currentParams.forEach(function (value, key) {
+          current.forEach(function (value, key) {
             if (value && !destination.searchParams.has(key)) destination.searchParams.set(key, value);
           });
+          return destination;
+        }
 
-          // Give the Meta Pixel enough time to initialize and send InitiateCheckout before leaving the page.
-          // The checkout is external, so navigating immediately can cancel the pixel request.
+        function go(destinationUrl, name, value) {
+          if (navigating) return;
+          navigating = true;
+          var destination;
+          try { destination = getAttribution(new URL(destinationUrl, window.location.href)); }
+          catch (error) { navigating = false; window.location.assign(destinationUrl); return; }
+
+          var pixelReady = loadMetaPixel();
+          if (pixelReady) {
+            try {
+              window.fbq('track', 'InitiateCheckout', {
+                content_name: name || 'Plano',
+                content_type: 'product',
+                currency: 'BRL',
+                value: typeof value === 'number' ? value : undefined
+              });
+            } catch (error) {}
+          }
+
+          // Wait briefly so the browser can dispatch the Pixel request before leaving for the external checkout.
           window.setTimeout(function () {
             window.location.assign(destination.toString());
-          }, tracked ? 800 : 0);
+          }, 1000);
         }
+
+        // Shared function for any checkout button rendered by the React app.
+        window.__checkoutWithTracking = go;
+
         document.addEventListener('click', function (event) {
           var target = event.target;
           var element = target && target.closest ? target.closest('a,button') : null;
           if (!element) return;
-          var href = element.getAttribute('href');
-          if (href && CHECKOUT_MAP[href]) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            go(CHECKOUT_MAP[href], 'Plano Completo', 19.90);
+          var href = element.getAttribute('href') || '';
+          var text = (element.textContent || '').replace(/\\s+/g, ' ').trim().toUpperCase();
+          var destination = href;
+          var name = 'Plano';
+          var value;
+
+          if (text.indexOf('QUERO ADQUIRIR PLANO COMPLETO POR 19,90') !== -1) {
+            destination = 'https://app.zuptos.com.br/checkout/40d7bf7e99b9c963';
+            name = 'Plano Completo';
+            value = 19.90;
+          } else if (text.indexOf('NÃO, QUERO LEVAR O PLANO DE R$ 9,90') !== -1) {
+            destination = 'https://app.zuptos.com.br/checkout/597422a2be19f26c';
+            name = 'Plano Essencial';
+            value = 9.90;
+          } else if (CHECKOUT_MAP[href]) {
+            destination = CHECKOUT_MAP[href];
+            name = 'Plano Completo';
+            value = 19.90;
+          } else if (href.indexOf('https://app.zuptos.com.br/checkout/') === 0) {
+            if (href.indexOf('597422a2be19f26c') !== -1) {
+              name = 'Plano Essencial';
+              value = 9.90;
+            } else if (href.indexOf('dc9508e2442481d9') !== -1) {
+              name = 'Plano Completo';
+              value = 27.00;
+            } else {
+              name = text.indexOf('COMPLETO') !== -1 ? 'Plano Completo' : 'Plano';
+              value = name === 'Plano Completo' ? 27.00 : undefined;
+            }
+          } else {
             return;
           }
-          var text = (element.textContent || '').replace(/\s+/g, ' ').trim().toUpperCase();
-          if (text === 'NÃO, QUERO LEVAR O PLANO DE R$ 9,90') {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            go('https://app.zuptos.com.br/checkout/597422a2be19f26c', 'Plano Essencial', 9.90);
-            return;
-          }
-          if (text === 'QUERO ADQUIRIR PLANO COMPLETO POR 19,90') {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            go('https://app.zuptos.com.br/checkout/40d7bf7e99b9c963', 'Plano Completo', 19.90);
-          }
+
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          go(destination, name, value);
         }, true);
       })();
     </script>
