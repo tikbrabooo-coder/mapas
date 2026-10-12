@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowDown, ArrowRight, Check, ChevronDown, Clock, ShieldCheck, Sparkles, Star, X } from 'lucide-react';
 
-const ASSET_CDN = 'https://rainbow-brioche-d5ce72.netlify.app';
+const ASSET = 'https://rainbow-brioche-d5ce72.netlify.app/images/';
 const HERO_SOURCE = 'https://raw.githubusercontent.com/tikbrabooo-coder/Teste-IMPORT/main/ChatGPT%20Image%207%20de%20out.%20de%202026%2C%2014_15_34.png';
-const optimizeRemoteImage = (source: string, width: number) =>
-  `https://wsrv.nl/?url=${encodeURIComponent(source)}&w=${width}&output=webp&q=72&maxage=1y`;
-const HERO_MOCKUP = optimizeRemoteImage(HERO_SOURCE, 960);
-const img = (name: string, width = 768) =>
-  `${ASSET_CDN}/.netlify/images?url=${encodeURIComponent(`/images/${name}`)}&w=${width}&fm=webp&q=72`;
+const optimizeImage = (source: string, width: number, quality: 60 | 70 | 75 = 70) =>
+  `/_vercel/image?url=${encodeURIComponent(source)}&w=${width}&q=${quality}`;
+const HERO_MOCKUP = optimizeImage(HERO_SOURCE, 1024, 75);
+const img = (name: string, width = 768) => optimizeImage(ASSET + encodeURIComponent(name), width, 70);
 const CHECKOUTS = { ESSENCIAL: 'https://payfast.greenn.com.br/redirect/796705', COMPLETO: 'https://payfast.greenn.com.br/redirect/796698', UPSELL: 'https://payfast.greenn.com.br/redirect/796707' };
 
 /** Repasse ao checkout os parâmetros de campanha recebidos pela página de vendas. */
