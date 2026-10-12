@@ -10,33 +10,9 @@
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="preconnect" href="https://rainbow-brioche-d5ce72.netlify.app" />
-    <link rel="preconnect" href="https://raw.githubusercontent.com" />
-    <link rel="preload" as="image" href="/_vercel/image?url=https%3A%2F%2Frainbow-brioche-d5ce72.netlify.app%2Fimages%2FChatGPT%2520Image%25202%2520de%2520out.%2520de%25202026%252C%252010_45_59.png&w=768&q=65" fetchpriority="high" />
-
-    <script>
-      (function () {
-        var VERCEL_IMAGE = '/_vercel/image?url=';
-        var NETLIFY_SOURCE = 'https://rainbow-brioche-d5ce72.netlify.app/images/';
-        var originalSetAttribute = HTMLImageElement.prototype.setAttribute;
-        var originalSrcDescriptor = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
-        function optimize(value) {
-          if (!value || typeof value !== 'string') return value;
-          if (value.indexOf('/_vercel/image?') !== -1 || value.indexOf(NETLIFY_SOURCE) !== 0) return value;
-          if (value.indexOf('garantia-30d') !== -1) return value;
-          return VERCEL_IMAGE + encodeURIComponent(value) + '&w=768&q=70';
-        }
-        Object.defineProperty(HTMLImageElement.prototype, 'src', {
-          configurable: true,
-          get: originalSrcDescriptor && originalSrcDescriptor.get,
-          set: function (value) {
-            if (typeof value === 'string') value = optimize(value);
-            if (originalSrcDescriptor && originalSrcDescriptor.set) originalSrcDescriptor.set.call(this, value);
-          }
-        });
-        HTMLImageElement.prototype.setAttribute = function (name, value) {
-          if (name.toLowerCase() === 'src' && typeof value === 'string') value = optimize(value);
-          return originalSetAttribute.call(this, name, value);
+    <link rel="preconnect" href="https://rainbow-brioche-d5ce72.netlify.app" crossorigin />
+    <link rel="preconnect" href="https://wsrv.nl" crossorigin />
+    <link rel="preload" as="image" type="image/webp" href="https://wsrv.nl/?url=https%3A%2F%2Fraw.githubusercontent.com%2Ftikbrabooo-coder%2FTeste-IMPORT%2Fmain%2FChatGPT%2520Image%25207%2520de%2520out.%2520de%25202026%252C%25201tribute.call(this, name, value);
         };
       })();
     </script>
