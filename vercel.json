@@ -1,16 +1,47 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "images": {
-    "sizes": [320, 480, 640, 768, 1024, 1280, 1536],
+    "sizes": [
+      320,
+      480,
+      640,
+      768,
+      1024,
+      1280,
+      1536
+    ],
     "remotePatterns": [
       {
         "protocol": "https",
         "hostname": "rainbow-brioche-d5ce72.netlify.app",
         "pathname": "/images/**"
+      },
+      {
+        "protocol": "https",
+        "hostname": "raw.githubusercontent.com",
+        "pathname": "/tikbrabooo-coder/Teste-IMPORT/main/**"
       }
     ],
     "minimumCacheTTL": 2678400,
-    "formats": ["image/avif", "image/webp"],
-    "qualities": [60, 70, 75]
-  }
+    "formats": [
+      "image/avif",
+      "image/webp"
+    ],
+    "qualities": [
+      60,
+      70,
+      75
+    ]
+  },
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
 }
