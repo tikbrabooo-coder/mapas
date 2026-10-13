@@ -11,7 +11,7 @@ const HERO_SRCSET = [640, 768, 1024, 1280]
   .map((width) => `${optimizeImage(HERO_SOURCE, width, 70)} ${width}w`)
   .join(', ');
 const img = (name: string, width = 768) => optimizeImage(ASSET + encodeURIComponent(name), width, 70);
-const CHECKOUTS = { ESSENCIAL: 'https://payfast.greenn.com.br/redirect/796705', COMPLETO: 'https://payfast.greenn.com.br/redirect/796698', UPSELL: 'https://payfast.greenn.com.br/redirect/796707' };
+const CHECKOUTS = { ESSENCIAL: 'https://app.zuptos.com.br/checkout/597422a2be19f26c', COMPLETO: 'https://app.zuptos.com.br/checkout/dc9508e2442481d9', UPSELL: 'https://app.zuptos.com.br/checkout/40d7bf7e99b9c963' };
 
 /** Repasse ao checkout os parâmetros de campanha recebidos pela página de vendas. */
 const checkoutHref = (checkoutUrl: string) => {
