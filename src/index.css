@@ -752,35 +752,31 @@ footer {
   background: #E53935 !important;
 }
 
-/* Carrossel automático e contínuo da seção "O que você vai receber". */
-@keyframes maps-carousel-glide {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-50%, 0, 0); }
-}
-
+/* Carrossel horizontal automático: cards lado a lado, loop por scrollLeft. */
 #mapas-preview .maps-auto-viewport {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
 }
 
-#mapas-preview .maps-auto-track {
-  display: flex;
-  width: max-content;
-  animation: maps-carousel-glide 52s linear infinite;
-  will-change: transform;
+#mapas-preview .maps-auto-viewport::-webkit-scrollbar {
+  display: none;
 }
 
 #mapas-preview .maps-auto-group {
   display: flex;
   flex: 0 0 auto;
+  align-items: stretch;
   gap: 1rem;
   padding-right: 1rem;
+  white-space: normal;
 }
 
-#mapas-preview .maps-auto-viewport:hover .maps-auto-track,
-#mapas-preview .maps-auto-viewport:focus-within .maps-auto-track,
-#mapas-preview .maps-auto-viewport:active .maps-auto-track {
-  animation-play-state: paused;
+#mapas-preview .maps-auto-group[aria-hidden="true"] {
+  pointer-events: none;
 }
 
 @media (min-width: 640px) {
@@ -791,24 +787,7 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #mapas-preview .maps-auto-viewport {
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  #mapas-preview .maps-auto-viewport::-webkit-scrollbar {
-    display: none;
-  }
-
-  #mapas-preview .maps-auto-track {
-    width: max-content;
-    animation: none;
-    transform: none;
-    will-change: auto;
-  }
-
   #mapas-preview .maps-auto-group[aria-hidden="true"] {
     display: none;
   }
 }
-
