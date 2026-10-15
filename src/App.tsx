@@ -56,7 +56,7 @@ function MapsSection(){
         if (!pausedRef.current && loopWidth > 0) {
           viewport.scrollLeft += pixelsPerSecond * elapsed / 1000;
           if (viewport.scrollLeft >= loopWidth) {
-            viewport.scrollLeft -= loopWidth;
+            viewport.scrollLeft = viewport.scrollLeft % loopWidth;
           }
         }
       }
@@ -84,7 +84,7 @@ function MapsSection(){
       <h2 className="mb-8 text-center text-2xl font-black text-slate-900 sm:text-4xl">VEJA NA <span className="heading-accent-cyan">PRÁTICA</span> UM POUCO DO QUE VOCÊ VAI RECEBER</h2>
       <div
         ref={viewportRef}
-        className="maps-auto-viewport flex gap-4 overflow-x-auto px-2 py-4 sm:gap-6 sm:px-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="maps-auto-viewport flex overflow-x-auto px-2 py-4 sm:px-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         onMouseEnter={() => { pausedRef.current = true; }}
         onMouseLeave={() => { pausedRef.current = false; }}
         onFocusCapture={() => { pausedRef.current = true; }}
