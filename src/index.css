@@ -791,3 +791,35 @@ footer {
     display: none;
   }
 }
+
+/* CTAs verdes da headline e do FAQ: verde mais vivo e pulsação moderadamente mais visível. */
+@keyframes green-cta-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 7px 22px rgba(5, 185, 102, .34), 0 2px 6px rgba(0, 0, 0, .08);
+  }
+  50% {
+    transform: scale(1.025);
+    box-shadow: 0 10px 30px rgba(5, 185, 102, .48), 0 0 0 5px rgba(5, 185, 102, .09);
+  }
+}
+
+#hero-section .max-w-xl > a,
+#faq .max-w-md > a {
+  background-color: #0BC875 !important;
+  animation: green-cta-pulse 1.55s ease-in-out infinite;
+  transform-origin: center;
+}
+
+#hero-section .max-w-xl > a:hover,
+#faq .max-w-md > a:hover {
+  background-color: #079D5B !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #hero-section .max-w-xl > a,
+  #faq .max-w-md > a {
+    animation: none;
+  }
+}
+
