@@ -751,3 +751,64 @@ footer {
 .dark-tech-shell > aside:first-child {
   background: #E53935 !important;
 }
+
+/* Carrossel automático e contínuo da seção "O que você vai receber". */
+@keyframes maps-carousel-glide {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+#mapas-preview .maps-auto-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+#mapas-preview .maps-auto-track {
+  display: flex;
+  width: max-content;
+  animation: maps-carousel-glide 52s linear infinite;
+  will-change: transform;
+}
+
+#mapas-preview .maps-auto-group {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+#mapas-preview .maps-auto-viewport:hover .maps-auto-track,
+#mapas-preview .maps-auto-viewport:focus-within .maps-auto-track,
+#mapas-preview .maps-auto-viewport:active .maps-auto-track {
+  animation-play-state: paused;
+}
+
+@media (min-width: 640px) {
+  #mapas-preview .maps-auto-group {
+    gap: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #mapas-preview .maps-auto-viewport {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  #mapas-preview .maps-auto-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  #mapas-preview .maps-auto-track {
+    width: max-content;
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  #mapas-preview .maps-auto-group[aria-hidden="true"] {
+    display: none;
+  }
+}
+
