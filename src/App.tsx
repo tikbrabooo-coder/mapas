@@ -19,7 +19,7 @@ const checkoutHref = (checkoutUrl: string) => {
 
   const incomingParams = new URLSearchParams(window.location.search);
   const trackingParams = [...incomingParams.entries()].filter(([key, value]) =>
-    /^(utm_[a-z0-9_]+|fbclid|gclid|gbraid|wbraid|ttclid|twclid|msclkid)$/i.test(key) && value.trim() !== ''
+    /^(utm_[a-z0-9_]+|fbclid|gclid|gbraid|wbraid|ttclid|twclid|msclkid|xcod|sck|src|sub[_-]?id[_-]?\\d*|sub\\d+|aff[_-]?sub[_-]?\\d*|click[_-]?id|li_fat_id|epik|rdt_cid|sc_cid)$/i.test(key) && value.trim() !== ''
   );
 
   if (trackingParams.length === 0) return checkoutUrl;
