@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { ArrowDown, ArrowRight, Check, ChevronDown, Clock, ShieldCheck, Sparkles, Star, X } from 'lucide-react';
 
 const ASSET = 'https://rainbow-brioche-d5ce72.netlify.app/images/';
-const HERO_SOURCE = 'https://raw.githubusercontent.com/tikbrabooo-coder/Teste-IMPORT/main/ChatGPT%20Image%207%20de%20out.%20de%202026%2C%2014_15_34.png';
+const HERO_SOURCE = 'https://raw.githubusercontent.com/tikbrabooo-coder/Teste-IMPORT/main/Computer%20Science%20Mind%20Maps%20Study%20Pack.png';
 const optimizeImage = (source: string, width: number, quality: 60 | 70 | 75 = 70) =>
   `/_vercel/image?url=${encodeURIComponent(source)}&w=${width}&q=${quality}`;
 const HERO_MOCKUP = optimizeImage(HERO_SOURCE, 1024, 70);
