@@ -44,11 +44,11 @@ function MapsSection(){
   useEffect(() => {
     const viewport = viewportRef.current;
     const firstGroup = firstGroupRef.current;
-    if (!viewport || !firstGroup || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!viewport || !firstGroup) return;
 
     let frame = 0;
     let previousTime = 0;
-    const pixelsPerSecond = 30;
+    const pixelsPerSecond = 38;
 
     const animate = (time: number) => {
       if (previousTime) {
