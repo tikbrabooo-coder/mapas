@@ -926,3 +926,56 @@ footer {
     line-height: 1.4;
   }
 }
+
+/* Garantia: rótulo centralizado, acabamento discreto e texto mais confortável de ler. */
+#garantia .guarantee-kicker-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto 16px;
+}
+#garantia .guarantee-kicker-wrap .section-kicker {
+  margin: 0 auto 7px !important;
+  display: inline-flex !important;
+  align-self: center;
+  border-color: #C9DCF9 !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0F6FF 100%) !important;
+  color: #2257B2 !important;
+  box-shadow: 0 4px 12px rgba(37,99,235,.07) !important;
+}
+#garantia .guarantee-kicker-wrap .section-kicker svg {
+  color: #2563EB !important;
+}
+#garantia .guarantee-kicker-note {
+  margin: 0 !important;
+  color: #6B82A0 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+  text-align: center !important;
+}
+#garantia > div > div:last-child > p {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+#garantia > div > div:last-child > p.flex {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+@media (max-width: 700px) {
+  #garantia .guarantee-kicker-wrap {
+    margin-bottom: 14px;
+  }
+  #garantia .guarantee-kicker-note {
+    font-size: 11px !important;
+  }
+  #garantia > div > div:last-child > p {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+  }
+  #garantia > div > div:last-child > p.flex {
+    font-size: 13px !important;
+  }
+}
+
