@@ -786,12 +786,6 @@ footer {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  #mapas-preview .maps-auto-group[aria-hidden="true"] {
-    display: none;
-  }
-}
-
 /* CTAs verdes da headline e do FAQ: verde mais vivo e pulsação moderadamente mais visível. */
 @keyframes green-cta-pulse {
   0%, 100% {
