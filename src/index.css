@@ -762,6 +762,9 @@ footer {
   width: 100%;
   overflow: hidden;
   position: relative;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 #mapas-preview .maps-auto-track {
@@ -783,10 +786,6 @@ footer {
 
 #mapas-preview .maps-auto-group[aria-hidden="true"] {
   pointer-events: none;
-}
-
-#mapas-preview .maps-auto-viewport:hover .maps-auto-track {
-  animation-play-state: paused;
 }
 
 @media (min-width: 640px) {
