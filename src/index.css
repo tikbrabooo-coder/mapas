@@ -927,3 +927,40 @@ footer {
   }
 }
 
+/* Carrossel contínuo dos bônus, no mesmo movimento suave das prévias dos mapas. */
+#bonus-section .bonus-auto-viewport {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+#bonus-section .bonus-auto-track {
+  display: flex;
+  width: max-content;
+  align-items: stretch;
+  will-change: transform;
+  animation: maps-preview-marquee 68s linear infinite;
+}
+#bonus-section .bonus-auto-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  gap: 1rem;
+  padding-right: 1rem;
+  white-space: normal;
+}
+#bonus-section .bonus-auto-group[aria-hidden="true"] {
+  pointer-events: none;
+}
+#bonus-section .bonus-auto-group .bonus-card {
+  flex: 0 0 auto;
+}
+@media (min-width: 640px) {
+  #bonus-section .bonus-auto-group {
+    gap: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
