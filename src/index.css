@@ -752,18 +752,24 @@ footer {
   background: #E53935 !important;
 }
 
-/* Carrossel horizontal automático: cards lado a lado, loop por scrollLeft. */
-#mapas-preview .maps-auto-viewport {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: auto;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
+/* Carrossel contínuo: track duplicado desliza suavemente sem saltos. */
+@keyframes maps-preview-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
-#mapas-preview .maps-auto-viewport::-webkit-scrollbar {
-  display: none;
+#mapas-preview .maps-auto-viewport {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+#mapas-preview .maps-auto-track {
+  display: flex;
+  width: max-content;
+  align-items: stretch;
+  will-change: transform;
+  animation: maps-preview-marquee 60s linear infinite;
 }
 
 #mapas-preview .maps-auto-group {
@@ -779,10 +785,24 @@ footer {
   pointer-events: none;
 }
 
+#mapas-preview .maps-auto-viewport:hover .maps-auto-track {
+  animation-play-state: paused;
+}
+
 @media (min-width: 640px) {
   #mapas-preview .maps-auto-group {
     gap: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  #mapas-preview .maps-auto-track {
+    animation-duration: 100s;
+  }
+}
+
+@media (min-width: 1024px) {
+  #mapas-preview .maps-auto-track {
+    animation-duration: 145s;
   }
 }
 
