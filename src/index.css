@@ -835,3 +835,104 @@ footer {
     animation: none;
   }
 }
+
+/* Pequenas etiquetas de contexto: acrescentam hierarquia sem criar novas seções longas. */
+.section-kicker {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 15px;
+  padding: 8px 13px;
+  border: 1px solid #C9DCF9;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,.94) 0%, #EDF4FF 100%);
+  color: #2257B2;
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.35;
+  letter-spacing: .035em;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(37,99,235,.045);
+}
+.section-kicker svg {
+  flex: 0 0 auto;
+  color: #2563EB;
+}
+.section-kicker-centered {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+#hero-section .section-kicker {
+  margin-bottom: 17px;
+  text-transform: none;
+  font-size: clamp(10px, 2.7vw, 12px);
+}
+#mapas-preview > div > .section-kicker {
+  margin-bottom: 12px;
+}
+#bonus-section .section-kicker,
+#ofertas .section-kicker,
+#faq .section-kicker {
+  text-transform: uppercase;
+  letter-spacing: .09em;
+}
+#garantia .section-kicker {
+  margin-bottom: 13px;
+  text-transform: uppercase;
+  letter-spacing: .075em;
+}
+.offer-trust-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+.offer-trust-row > p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid #CFDFF4;
+  border-radius: 13px;
+  background: rgba(255,255,255,.76);
+  color: #4D6686;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+}
+.offer-trust-row svg {
+  flex: 0 0 auto;
+  color: #2563EB;
+}
+.offer-trust-row .trust-separator {
+  color: #8CA8CE;
+}
+@media (max-width: 480px) {
+  .section-kicker {
+    gap: 6px;
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+  #hero-section .section-kicker {
+    max-width: calc(100vw - 32px);
+    margin-bottom: 14px;
+    letter-spacing: 0;
+  }
+  .offer-trust-row {
+    margin-top: 15px;
+  }
+  .offer-trust-row > p {
+    column-gap: 6px;
+    row-gap: 4px;
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+}
+
