@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowDown, ArrowRight, Check, ChevronDown, Clock, ShieldCheck, Sparkles, Star, X } from 'lucide-react';
 
@@ -37,38 +37,6 @@ const navigateToCheckout=(event:React.MouseEvent<HTMLAnchorElement>,checkoutUrl:
 const Button=({href,children,muted=false,onClick}:{href?:string;children:React.ReactNode;muted?:boolean;onClick?:()=>void})=>{const isCheckout=Boolean(href&&(href.includes('payfast.greenn.com.br/redirect/')||href.includes('app.zuptos.com.br/checkout/')));const className=`inline-flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-center font-extrabold uppercase transition ${isCheckout?'go-to-checkout ':''}${muted?'border border-slate-300 bg-white text-slate-900 hover:bg-slate-50':'bg-emerald-600 text-white shadow-pink-cta hover:bg-emerald-700'}`;const inner=<><span>{children}</span><ArrowRight className="h-5 w-5"/></>;if(isCheckout&&href)return <a href={href} onClick={event=>navigateToCheckout(event,href)} className={className}>{inner}</a>;return <a href={href||'#'} onClick={onClick?e=>{e.preventDefault();onClick()}:undefined} className={className}>{inner}</a>};
 function Hero(){return <><aside className="w-full bg-[#E53935] px-3 py-2 text-center text-xs font-bold text-white sm:text-sm"><div className="mx-auto flex max-w-5xl items-center justify-center gap-2"><Clock className="h-4 w-4"/><span>⚡ Oferta por tempo limitado disponível apenas hoje</span></div></aside><section id="hero-section" className="bg-[#F0F4FA] px-4 pb-12 pt-9 text-slate-800 sm:pb-20 sm:pt-12"><div className="mx-auto max-w-4xl text-center"><h1 className="mx-auto w-full max-w-4xl px-1 text-center text-[clamp(1.05rem,5.1vw,3.63rem)] font-black leading-[1.08] tracking-[-0.035em] text-slate-900"><span className="block whitespace-nowrap"><span className="hero-accent">+150</span> Mapas Mentais de Ciência</span><span className="block whitespace-nowrap">da Computação para estudar.</span></h1><a href="#ofertas" className="mx-auto mt-2 block w-full max-w-[720px] sm:mt-5"><img src={HERO_MOCKUP} srcSet={HERO_SRCSET} sizes="(max-width: 672px) 100vw, 672px" alt="Mockup +150 Mapas Mentais de Ciência da Computação" width={1024} height={1024} fetchPriority="high" loading="eager" decoding="async" className="mx-auto aspect-square h-auto w-full object-contain"/></a><p className="mx-auto mt-7 max-w-2xl text-base font-medium leading-relaxed text-slate-600 sm:text-xl">Revise os principais conceitos da Ciência da Computação de forma visual, organizada e sem se perder em conteúdos extensos.</p><div className="mx-auto mt-7 max-w-xl"><Button href="#ofertas">QUERO ACESSAR OS +150 MAPAS AGORA</Button></div></div></section></>}
 function MapsSection(){
-  const viewportRef = useRef<HTMLDivElement | null>(null);
-  const firstGroupRef = useRef<HTMLDivElement | null>(null);
-  const pausedRef = useRef(false);
-
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    const firstGroup = firstGroupRef.current;
-    if (!viewport || !firstGroup) return;
-
-    let frame = 0;
-    let previousTime = 0;
-    const pixelsPerSecond = 38;
-
-    const animate = (time: number) => {
-      if (previousTime) {
-        const elapsed = Math.min(time - previousTime, 50);
-        const loopWidth = firstGroup.offsetWidth;
-        if (!pausedRef.current && loopWidth > 0) {
-          viewport.scrollLeft += pixelsPerSecond * elapsed / 1000;
-          if (viewport.scrollLeft >= loopWidth) {
-            viewport.scrollLeft = viewport.scrollLeft % loopWidth;
-          }
-        }
-      }
-      previousTime = time;
-      frame = window.requestAnimationFrame(animate);
-    };
-
-    frame = window.requestAnimationFrame(animate);
-    return () => window.cancelAnimationFrame(frame);
-  }, []);
-
   const renderCards = (clone = false) => maps.map(([title, source]) => (
     <article key={`${title}-${clone ? 'clone' : 'original'}`} className="carousel-card aspect-[16/10] w-[92vw] max-w-[760px] shrink-0 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl sm:w-[72vw] lg:w-[60vw]">
       <div className="flex h-full flex-col p-3 sm:p-4">
@@ -83,22 +51,14 @@ function MapsSection(){
   return <section id="mapas-preview" className="perf-section bg-[#F7FAFF] px-4 py-12 sm:py-16">
     <div className="mx-auto max-w-6xl">
       <h2 className="mb-8 text-center text-2xl font-black text-slate-900 sm:text-4xl">VEJA NA <span className="heading-accent-cyan">PRÁTICA</span> UM POUCO DO QUE VOCÊ VAI RECEBER</h2>
-      <div
-        ref={viewportRef}
-        className="maps-auto-viewport flex overflow-x-auto px-2 py-4 sm:px-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        onMouseEnter={() => { pausedRef.current = true; }}
-        onMouseLeave={() => { pausedRef.current = false; }}
-        onFocusCapture={() => { pausedRef.current = true; }}
-        onBlurCapture={() => { pausedRef.current = false; }}
-        onTouchStart={() => { pausedRef.current = true; }}
-        onTouchEnd={() => { pausedRef.current = false; }}
-        aria-label="Carrossel horizontal automático dos mapas mentais"
-      >
-        <div ref={firstGroupRef} className="maps-auto-group flex shrink-0 gap-4 sm:gap-6">
-          {renderCards()}
-        </div>
-        <div className="maps-auto-group flex shrink-0 gap-4 sm:gap-6" aria-hidden="true">
-          {renderCards(true)}
+      <div className="maps-auto-viewport py-4" aria-label="Carrossel automático dos mapas mentais">
+        <div className="maps-auto-track">
+          <div className="maps-auto-group">
+            {renderCards()}
+          </div>
+          <div className="maps-auto-group" aria-hidden="true">
+            {renderCards(true)}
+          </div>
         </div>
       </div>
     </div>
