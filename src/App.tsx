@@ -90,11 +90,17 @@ function PainSolutions(){
         {items.map((item,index)=><article className="pain-solution-card" key={item.pain}>
           <div className="pain-solution-top">
             <span className="pain-solution-number">0{index+1}</span>
-            <span className="pain-solution-label">O DESAFIO</span>
+            <span className="pain-solution-label">NA PRÁTICA</span>
           </div>
-          <h3>{item.pain}</h3>
-          <div className="pain-solution-divider"><span/><ArrowRight className="h-4 w-4"/><span/></div>
-          <p className="pain-solution-answer"><Check className="h-5 w-5 shrink-0"/><span>{item.solution}</span></p>
+          <div className="pain-solution-state pain-solution-wrong">
+            <div className="pain-solution-state-label"><X className="h-4 w-4"/><span>ERRADO</span></div>
+            <h3>{item.pain}</h3>
+          </div>
+          <div className="pain-solution-divider" aria-hidden="true"><span/><ArrowDown className="h-4 w-4"/><span/></div>
+          <div className="pain-solution-state pain-solution-right">
+            <div className="pain-solution-state-label"><Check className="h-4 w-4"/><span>CERTO</span></div>
+            <p>{item.solution}</p>
+          </div>
         </article>)}
       </div>
     </div>
