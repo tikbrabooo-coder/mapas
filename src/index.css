@@ -1159,8 +1159,8 @@ footer {
 }
 #bonus-section .bonus-card-image {
   display: block !important;
-  width: 92% !important;
-  aspect-ratio: 3 / 2 !important;
+  width: 58% !important;
+  aspect-ratio: 1 / 1 !important;
   min-height: 0 !important;
   max-width: none !important;
   margin: 10px auto 0 !important;
@@ -1203,8 +1203,8 @@ footer {
     border-radius: 18px !important;
   }
   #bonus-section .bonus-card-image {
-    width: 92% !important;
-    aspect-ratio: 3 / 2 !important;
+    width: 58% !important;
+    aspect-ratio: 1 / 1 !important;
     margin-top: 9px !important;
     border-radius: 14px !important;
   }
