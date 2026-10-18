@@ -979,15 +979,13 @@ footer {
   }
 }
 
-/* Seção curta de dores e soluções: clara, visual e sem alongar a página. */
+/* Seção de dores e soluções com contraste suave entre problema e caminho recomendado. */
 #pain-solutions {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 5% 5%, rgba(37,99,235,.07), transparent 28%),
-    linear-gradient(180deg, #F4F8FE 0%, #EAF2FC 100%) !important;
-  border-top: 1px solid #DCE7F5;
-  border-bottom: 1px solid #D5E3F4;
+  background: linear-gradient(180deg, #FAFBFC 0%, #F4F7F6 100%) !important;
+  border-top: 1px solid #E8EEEC;
+  border-bottom: 1px solid #E8EEEC;
 }
 #pain-solutions .pain-solutions-heading {
   max-width: 780px;
@@ -996,19 +994,19 @@ footer {
 }
 #pain-solutions .pain-solutions-heading h2 {
   margin: 0;
-  color: #122D4A;
+  color: #1F2933;
   font-size: clamp(26px, 3.8vw, 40px);
-  font-weight: 950;
-  line-height: 1.12;
-  letter-spacing: -.04em;
+  font-weight: 900;
+  line-height: 1.14;
+  letter-spacing: -.035em;
 }
 #pain-solutions .pain-solutions-heading h2 span {
-  color: #2563EB;
+  color: #426F8B;
 }
 #pain-solutions .pain-solutions-heading > p:last-child {
   max-width: 650px;
   margin: 13px auto 0;
-  color: #5C718B;
+  color: #64736F;
   font-size: 15px;
   font-weight: 500;
   line-height: 1.65;
@@ -1021,16 +1019,17 @@ footer {
 }
 #pain-solutions .pain-solution-card {
   min-width: 0;
-  padding: 21px 21px 20px;
-  border: 1px solid #D6E3F4;
+  padding: 19px;
+  border: 1px solid #E1E8E5;
   border-radius: 20px;
-  background: linear-gradient(160deg, #FFFFFF 0%, #F9FBFF 100%);
-  box-shadow: 0 9px 22px rgba(26,64,116,.055);
+  background: #FFFFFF;
+  box-shadow: 0 7px 22px rgba(31, 53, 45, .045);
 }
 #pain-solutions .pain-solution-top {
   display: flex;
   align-items: center;
   gap: 9px;
+  margin-bottom: 16px;
 }
 #pain-solutions .pain-solution-number {
   display: inline-flex;
@@ -1039,51 +1038,73 @@ footer {
   align-items: center;
   justify-content: center;
   border-radius: 9px;
-  background: #E7F0FF;
-  color: #2563EB;
+  background: #EEF2F1;
+  color: #50615B;
   font-size: 11px;
-  font-weight: 950;
+  font-weight: 900;
 }
 #pain-solutions .pain-solution-label {
-  color: #7B8DA4;
+  color: #7B8984;
   font-size: 10px;
-  font-weight: 900;
+  font-weight: 850;
   letter-spacing: .12em;
 }
-#pain-solutions .pain-solution-card h3 {
-  margin: 15px 0 0;
-  min-height: 48px;
-  color: #163B63;
-  font-size: 18px;
+#pain-solutions .pain-solution-state {
+  padding: 14px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+}
+#pain-solutions .pain-solution-wrong {
+  background: #FBF0EF;
+  border-color: #F0D7D4;
+}
+#pain-solutions .pain-solution-right {
+  background: #EFF6EF;
+  border-color: #D4E5D2;
+}
+#pain-solutions .pain-solution-state-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
   font-weight: 900;
-  line-height: 1.28;
-  letter-spacing: -.025em;
+  letter-spacing: .11em;
+}
+#pain-solutions .pain-solution-wrong .pain-solution-state-label {
+  color: #A34F48;
+}
+#pain-solutions .pain-solution-right .pain-solution-state-label {
+  color: #3E704A;
+}
+#pain-solutions .pain-solution-wrong h3 {
+  margin: 8px 0 0;
+  color: #713A36;
+  font-size: 17px;
+  font-weight: 850;
+  line-height: 1.35;
+  letter-spacing: -.02em;
 }
 #pain-solutions .pain-solution-divider {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 15px 0 12px;
-  color: #6B9BEA;
+  margin: 11px 0;
+  color: #91A09A;
 }
 #pain-solutions .pain-solution-divider span {
   height: 1px;
   flex: 1;
-  background: #D9E6F7;
+  background: #E4EAE7;
 }
-#pain-solutions .pain-solution-answer {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin: 0;
-  color: #526B87;
+#pain-solutions .pain-solution-right p {
+  margin: 8px 0 0;
+  color: #365A3E;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.6;
 }
-#pain-solutions .pain-solution-answer svg {
-  margin-top: 1px;
-  color: #0DAD7A;
+#pain-solutions .pain-solution-state-label svg {
+  flex-shrink: 0;
 }
 @media (max-width: 760px) {
   #pain-solutions {
@@ -1099,20 +1120,20 @@ footer {
   }
   #pain-solutions .pain-solutions-grid {
     grid-template-columns: 1fr;
-    gap: 11px;
+    gap: 12px;
     margin-top: 22px;
   }
   #pain-solutions .pain-solution-card {
-    padding: 17px 17px 16px;
+    padding: 16px;
     border-radius: 17px;
   }
-  #pain-solutions .pain-solution-card h3 {
-    margin-top: 11px;
-    min-height: 0;
-    font-size: 17px;
+  #pain-solutions .pain-solution-top {
+    margin-bottom: 12px;
   }
-  #pain-solutions .pain-solution-divider {
-    margin: 10px 0;
+  #pain-solutions .pain-solution-state {
+    padding: 13px;
+  }
+  #pain-solutions .pain-solution-wrong h3 {
+    font-size: 16px;
   }
 }
-
