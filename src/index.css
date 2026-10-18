@@ -979,3 +979,140 @@ footer {
   }
 }
 
+/* Seção curta de dores e soluções: clara, visual e sem alongar a página. */
+#pain-solutions {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 5% 5%, rgba(37,99,235,.07), transparent 28%),
+    linear-gradient(180deg, #F4F8FE 0%, #EAF2FC 100%) !important;
+  border-top: 1px solid #DCE7F5;
+  border-bottom: 1px solid #D5E3F4;
+}
+#pain-solutions .pain-solutions-heading {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+#pain-solutions .pain-solutions-heading h2 {
+  margin: 0;
+  color: #122D4A;
+  font-size: clamp(26px, 3.8vw, 40px);
+  font-weight: 950;
+  line-height: 1.12;
+  letter-spacing: -.04em;
+}
+#pain-solutions .pain-solutions-heading h2 span {
+  color: #2563EB;
+}
+#pain-solutions .pain-solutions-heading > p:last-child {
+  max-width: 650px;
+  margin: 13px auto 0;
+  color: #5C718B;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+#pain-solutions .pain-solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+  margin-top: 30px;
+}
+#pain-solutions .pain-solution-card {
+  min-width: 0;
+  padding: 21px 21px 20px;
+  border: 1px solid #D6E3F4;
+  border-radius: 20px;
+  background: linear-gradient(160deg, #FFFFFF 0%, #F9FBFF 100%);
+  box-shadow: 0 9px 22px rgba(26,64,116,.055);
+}
+#pain-solutions .pain-solution-top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+#pain-solutions .pain-solution-number {
+  display: inline-flex;
+  width: 29px;
+  height: 29px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #E7F0FF;
+  color: #2563EB;
+  font-size: 11px;
+  font-weight: 950;
+}
+#pain-solutions .pain-solution-label {
+  color: #7B8DA4;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+#pain-solutions .pain-solution-card h3 {
+  margin: 15px 0 0;
+  min-height: 48px;
+  color: #163B63;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.28;
+  letter-spacing: -.025em;
+}
+#pain-solutions .pain-solution-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 15px 0 12px;
+  color: #6B9BEA;
+}
+#pain-solutions .pain-solution-divider span {
+  height: 1px;
+  flex: 1;
+  background: #D9E6F7;
+}
+#pain-solutions .pain-solution-answer {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  color: #526B87;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+#pain-solutions .pain-solution-answer svg {
+  margin-top: 1px;
+  color: #0DAD7A;
+}
+@media (max-width: 760px) {
+  #pain-solutions {
+    padding-top: 42px !important;
+    padding-bottom: 42px !important;
+  }
+  #pain-solutions .pain-solutions-heading h2 {
+    font-size: clamp(26px, 7vw, 34px);
+  }
+  #pain-solutions .pain-solutions-heading > p:last-child {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  #pain-solutions .pain-solutions-grid {
+    grid-template-columns: 1fr;
+    gap: 11px;
+    margin-top: 22px;
+  }
+  #pain-solutions .pain-solution-card {
+    padding: 17px 17px 16px;
+    border-radius: 17px;
+  }
+  #pain-solutions .pain-solution-card h3 {
+    margin-top: 11px;
+    min-height: 0;
+    font-size: 17px;
+  }
+  #pain-solutions .pain-solution-divider {
+    margin: 10px 0;
+  }
+}
+
